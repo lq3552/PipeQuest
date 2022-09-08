@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1736324648908207903}
   - component: {fileID: 1736324648908207900}
   - component: {fileID: 1736324648908207901}
-  - component: {fileID: -1890862156146495189}
+  - component: {fileID: -13156113317269678}
   m_Layer: 0
   m_Name: ZonePressured
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1890862156146495189
+--- !u!114 &-13156113317269678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1736324648908207891}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47ea81f30678445eb014b3da23fa087, type: 3}
+  m_Script: {fileID: 11500000, guid: 65dbb577b629b490c96cecca7c72e909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneType: 1

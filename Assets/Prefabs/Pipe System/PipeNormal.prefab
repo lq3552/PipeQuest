@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PipeNormal
       objectReference: {fileID: 0}
+    - target: {fileID: 4515633702820858702, guid: 77b9c1ad4de3a4a489c3f5b2be9f1840,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4515633702820858703, guid: 77b9c1ad4de3a4a489c3f5b2be9f1840,
         type: 3}
       propertyPath: m_RootOrder
@@ -106,4 +111,5 @@ PrefabInstance:
     - {fileID: 4859423714467564418, guid: 77b9c1ad4de3a4a489c3f5b2be9f1840, type: 3}
     - {fileID: 4515633703731842484, guid: 77b9c1ad4de3a4a489c3f5b2be9f1840, type: 3}
     - {fileID: 4515633703731842485, guid: 77b9c1ad4de3a4a489c3f5b2be9f1840, type: 3}
+    - {fileID: 6441036325876602363, guid: 77b9c1ad4de3a4a489c3f5b2be9f1840, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 77b9c1ad4de3a4a489c3f5b2be9f1840, type: 3}

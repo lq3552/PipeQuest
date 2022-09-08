@@ -76,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 1240307538148451584, guid: c8bf8a7cb2b94483d9547078be657222,
         type: 3}
       propertyPath: m_Name
-      value: Edge1 (2)
+      value: EdgeNormal (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1240307538148451588, guid: c8bf8a7cb2b94483d9547078be657222,
         type: 3}
@@ -151,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 1240307538148451584, guid: c8bf8a7cb2b94483d9547078be657222,
         type: 3}
       propertyPath: m_Name
-      value: Edge1 (1)
+      value: EdgeNormal
       objectReference: {fileID: 0}
     - target: {fileID: 1240307538148451588, guid: c8bf8a7cb2b94483d9547078be657222,
         type: 3}

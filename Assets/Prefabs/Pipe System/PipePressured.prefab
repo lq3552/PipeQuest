@@ -99,9 +99,10 @@ PrefabInstance:
     - target: {fileID: 1736324648908207891, guid: 77463d20bd13e4bd7963cc57c2c9ace9,
         type: 3}
       propertyPath: m_Name
-      value: Zone1
+      value: ZonePressured
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1890862156146495189, guid: 77463d20bd13e4bd7963cc57c2c9ace9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 77463d20bd13e4bd7963cc57c2c9ace9, type: 3}
 --- !u!4 &4515633703731842491 stripped
 Transform:
@@ -119,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 1240307538148451584, guid: c8bf8a7cb2b94483d9547078be657222,
         type: 3}
       propertyPath: m_Name
-      value: Edge1
+      value: EdgeNormal
       objectReference: {fileID: 0}
     - target: {fileID: 1240307538148451588, guid: c8bf8a7cb2b94483d9547078be657222,
         type: 3}
@@ -194,7 +195,7 @@ PrefabInstance:
     - target: {fileID: 1240307538148451584, guid: c8bf8a7cb2b94483d9547078be657222,
         type: 3}
       propertyPath: m_Name
-      value: Edge2
+      value: EdgeNormal (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1240307538148451588, guid: c8bf8a7cb2b94483d9547078be657222,
         type: 3}
