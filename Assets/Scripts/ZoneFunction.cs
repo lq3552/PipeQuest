@@ -7,6 +7,7 @@ public class ZoneFunction : MonoBehaviour
     [SerializeField] private int zoneType;
 
     private int count = 0;
+    private Vector3 forward;
 
     // Properties
     public int ZoneType
@@ -14,6 +15,17 @@ public class ZoneFunction : MonoBehaviour
         get { return zoneType; }
     }
 
+    private void Start()
+    {
+        if(zoneType == 0)
+        {
+            forward = transform.parent.Find("Noozle").position;
+        }
+        else
+        {
+            forward = -transform.up;
+        }
+    }
 
     // Add force to gas particles
     private void OnTriggerStay(Collider other)
@@ -24,10 +36,10 @@ public class ZoneFunction : MonoBehaviour
             switch (zoneType)
             {
                 case 0:
-                    gasRigidbody.AddForce(-transform.up * 5f, ForceMode.Force);
+                    gasRigidbody.AddForce((forward - other.gameObject.transform.position).normalized * 5f, ForceMode.Force); // This code looks messy
                     break;
                 case 1:
-                    gasRigidbody.AddForce(-transform.up * 2f, ForceMode.Force);
+                    gasRigidbody.AddForce(forward * 2.5f, ForceMode.Force);
                     break;
                 case 2:
                     break;
