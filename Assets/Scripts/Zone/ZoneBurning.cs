@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZoneBurning : ZoneManipulateParticle
 {
-    private float delay = 2.5f;
+    private float delay = 1.5f;
 
     protected override void HandleGasParticle(Collider other)
     {
