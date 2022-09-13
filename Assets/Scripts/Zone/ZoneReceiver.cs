@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZoneReceiverFunction : ZoneFunction
+public class ZoneReceiver : Zone
 {
     int count;
 
     // destroy and count gas particles received
-    protected override void HandleGasParticle(GameObject gasObject, Rigidbody gasRigidbody)
+    protected override void HandleGasParticle(Collider other)
     {
         Debug.Log(++count);
-        Destroy(gasObject);
+        Destroy(other.gameObject);
     }
 }
