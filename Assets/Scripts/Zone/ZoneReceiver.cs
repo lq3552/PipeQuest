@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZoneReceiver : Zone
+public class ZoneReceiver : ZoneManipulateParticle
 {
-    int count;
+    private int count = 0;
 
     // destroy and count gas particles received
     protected override void HandleGasParticle(Collider other)
     {
-        Debug.Log(++count);
-        Destroy(other.gameObject);
+        other.gameObject.GetComponent<GasParticle>().DelayTillDestroy = 1.0f;
+        count++;
+        Debug.Log("Received:" + count);
     }
 }
