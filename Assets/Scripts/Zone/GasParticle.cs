@@ -38,7 +38,7 @@ public class GasParticle : MonoBehaviour
     {
         if (IsInZone)
         {
-            if(delayTillDestroy <= 0)
+            if (delayTillDestroy <= 0)
             {
                 EventManager.DestroyGasInZoneEvent += DestroyGas;
             }
@@ -54,8 +54,10 @@ public class GasParticle : MonoBehaviour
 
     }
 
-   private void DestroyGas()
+    private void DestroyGas()
     {
+        Instantiate(burningEffect, transform.position, burningEffect.transform.rotation);
+        EventManager.DestroyGasInZoneEvent -= DestroyGas;
         gameObject.SetActive(false);
     }
 }

@@ -8,8 +8,6 @@ public class ZoneBurning : ZoneManipulateParticle
 
     protected override void HandleGasParticle(Collider other)
     {
-        GasParticle gasScript = other.gameObject.GetComponent<GasParticle>();
-        gasScript.DelayTillDestroy = delay;
-        gasScript.IsInZone = true;
+        other.gameObject.GetComponent<GasParticle>().DelayTillDestroy = delay;
     }
 }
