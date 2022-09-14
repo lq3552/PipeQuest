@@ -8,7 +8,7 @@ public class ZoneDraggy : ZoneAddForce
     {
         base.Start();
         if (forceMagnitude >= 0f)
-            forceMagnitude = -0.001f;
+            forceMagnitude = -0.1f;
     }
 
     protected override void HandleGasParticle(Collider other)

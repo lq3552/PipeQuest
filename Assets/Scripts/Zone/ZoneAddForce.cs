@@ -25,4 +25,10 @@ public abstract class ZoneAddForce : Zone
     {
         forward = -transform.up;
     }
+
+    protected override void HandleGasParticle(Collider other)
+    {
+        Rigidbody gasRigidbody = other.gameObject.GetComponent<Rigidbody>();
+        gasRigidbody.AddForce(forward * forceMagnitude, ForceMode.Force);
+    }
 }
