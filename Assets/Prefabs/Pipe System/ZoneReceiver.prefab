@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 5272673820010180198, guid: 25d7bb638cb33407c9f29d36e3976148,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 5272673820010180198, guid: 25d7bb638cb33407c9f29d36e3976148,
         type: 3}
@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 5272673820010180199, guid: 25d7bb638cb33407c9f29d36e3976148,
         type: 3}
       propertyPath: m_Name
-      value: ZoneReceiver Variant
+      value: ZoneReceiver
       objectReference: {fileID: 0}
     - target: {fileID: 5272673820010180200, guid: 25d7bb638cb33407c9f29d36e3976148,
         type: 3}

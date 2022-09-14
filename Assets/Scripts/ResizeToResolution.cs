@@ -19,12 +19,12 @@ public class ResizeToResolution : MonoBehaviour
         if (screenRatio > desiredRatio)
         {
             float height = screenSize.y;
-            transform.localScale = new Vector3(height * desiredRatio, height, transform.localScale.z);
+            transform.localScale = new Vector3(height * desiredRatio, height, height);
         }
         else
         {
             float width = screenSize.x;
-            transform.localScale = new Vector3(width, width / desiredRatio, transform.localScale.z);
+            transform.localScale = new Vector3(width, width / desiredRatio, width);
         }
     }
 }

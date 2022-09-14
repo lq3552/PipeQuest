@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 1736324648908207890, guid: 77463d20bd13e4bd7963cc57c2c9ace9,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.20000006
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 1736324648908207890, guid: 77463d20bd13e4bd7963cc57c2c9ace9,
         type: 3}
@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 1736324648908207891, guid: 77463d20bd13e4bd7963cc57c2c9ace9,
         type: 3}
       propertyPath: m_Name
-      value: ZonePump Variant
+      value: ZonePump
       objectReference: {fileID: 0}
     - target: {fileID: 1736324648908207900, guid: 77463d20bd13e4bd7963cc57c2c9ace9,
         type: 3}
@@ -113,3 +113,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146e200836bb04a3180d0e2d08fe7f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceMagnitude: 0
