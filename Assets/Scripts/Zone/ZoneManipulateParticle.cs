@@ -10,7 +10,6 @@ public abstract class ZoneManipulateParticle : Zone
     {
         if (other.CompareTag("Gas"))
         {
-            other.gameObject.GetComponent<GasParticle>().IsInZone = true;
             HandleGasParticle(other);
         }
     }
@@ -19,7 +18,9 @@ public abstract class ZoneManipulateParticle : Zone
     {
         if (other.CompareTag("Gas"))
         {
-            other.gameObject.GetComponent<GasParticle>().IsInZone = false;
+            HandleGasParticleOutOfZone(other);
         }
     }
+
+    protected abstract void HandleGasParticleOutOfZone(Collider other);
 }

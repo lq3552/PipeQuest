@@ -9,8 +9,18 @@ public class ZoneReceiver : ZoneManipulateParticle
     // destroy and count gas particles received
     protected override void HandleGasParticle(Collider other)
     {
-        other.gameObject.GetComponent<GasParticle>().DelayTillDestroy = 1.0f;
+        other.gameObject.GetComponent<GasParticle>().DestroyOnTimer(0.3f, ReceiveGas);
         count++;
         Debug.Log("Received:" + count);
+    }
+
+    private void ReceiveGas(GameObject gasParticleObject)
+    {
+        gasParticleObject.SetActive(false);
+    }
+
+    protected override void HandleGasParticleOutOfZone(Collider other)
+    {
+        other.gameObject.GetComponent<GasParticle>().StopDestroyOnTimer(ReceiveGas);
     }
 }

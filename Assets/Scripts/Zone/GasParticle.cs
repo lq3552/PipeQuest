@@ -1,63 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GasParticle : MonoBehaviour
 {
-    private bool isInZone = false;
-    private float delayTillDestroy = 0f;
+    public delegate void ActionOnTimer(GameObject gasObject);
+    private float timer = 0f;
+    private ActionOnTimer actionOnTimer;
 
-    [SerializeField] ParticleSystem burningEffect;
-
-    public bool IsInZone
+    public void DestroyOnTimer(float timer, ActionOnTimer actionOnTimer)
     {
-        set
-        {
-            isInZone = value;
-        }
-        get
-        {
-            return isInZone;
-        }
+        this.timer = timer;
+        this.actionOnTimer += actionOnTimer;
     }
 
-    public float DelayTillDestroy
+    public void StopDestroyOnTimer(ActionOnTimer actionOnTimer)
     {
-        set
-        {
-            delayTillDestroy = value;
-        }
-        get
-        {
-            return delayTillDestroy;
-        }
+        this.actionOnTimer -= actionOnTimer;
     }
 
-    // TODO: for now just for the sake of using "events". Should found a better usage
     private void Update()
     {
-        if (IsInZone)
+        if (timer > 0f)
         {
-            if (delayTillDestroy <= 0)
-            {
-                EventManager.DestroyGasInZoneEvent += DestroyGas;
-            }
-            else
-            {
-                delayTillDestroy -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            EventManager.DestroyGasInZoneEvent -= DestroyGas;
+            timer -= Time.deltaTime;
         }
 
+        if (IsTimerComplete())
+        {
+            actionOnTimer?.Invoke(gameObject);
+        }
     }
 
-    private void DestroyGas()
+    private bool IsTimerComplete()
     {
-        Instantiate(burningEffect, transform.position, burningEffect.transform.rotation);
-        EventManager.DestroyGasInZoneEvent -= DestroyGas;
-        gameObject.SetActive(false);
+        return timer <= 0f;
     }
 }
