@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// define zones that manipulate the existence and effect of gas particles
+/// </summary>
 public abstract class ZoneManipulateParticle : Zone
 {
     // modify status of the gas particle once it enters the zone

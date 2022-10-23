@@ -3,9 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// provide behavior of gas particles
+/// </summary>
 public class GasParticle : MonoBehaviour
 {
+    // declare delegate that manipulate gas particles
     public delegate void ActionOnTimer(GameObject gasObject);
+
+    // define timer variables 
     private float timer = 0f;
     private ActionOnTimer actionOnTimer;
 

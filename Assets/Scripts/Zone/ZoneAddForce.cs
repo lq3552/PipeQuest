@@ -19,6 +19,7 @@ public abstract class ZoneAddForce : Zone
     protected virtual void Start()
     {
         SetForwardDirection();
+        forceMagnitude *= ResizeToResolution.RescaleFactor;
     }
 
     protected virtual void SetForwardDirection()
@@ -29,6 +30,6 @@ public abstract class ZoneAddForce : Zone
     protected override void HandleGasParticle(Collider other)
     {
         Rigidbody gasRigidbody = other.gameObject.GetComponent<Rigidbody>();
-        gasRigidbody.AddForce(forward * forceMagnitude, ForceMode.Force);
+        gasRigidbody.AddForce(forward * forceMagnitude, ForceMode.Acceleration);
     }
 }
