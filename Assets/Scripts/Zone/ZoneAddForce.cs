@@ -19,7 +19,7 @@ public abstract class ZoneAddForce : Zone
     protected virtual void Start()
     {
         SetForwardDirection();
-        forceMagnitude *= ResizeToResolution.RescaleFactor;
+        forceMagnitude *= 1.0f; //ResizeToResolution.RescaleFactor;
     }
 
     protected virtual void SetForwardDirection()
