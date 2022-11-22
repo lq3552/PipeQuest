@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3200818970025929484}
+  - component: {fileID: 1088620921}
   m_Layer: 0
   m_Name: Pump
   m_TagString: Untagged
@@ -34,6 +35,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1088620921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3200818970025929487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86871a3f511544c39b3f5917cbae3d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gasParticle: {fileID: 5232434850552098849, guid: a8e7cdb4fc15b466d811f20b9adbf0d0,
+    type: 3}
 --- !u!1001 &3200818970445045252
 PrefabInstance:
   m_ObjectHideFlags: 0

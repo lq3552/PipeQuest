@@ -7,7 +7,7 @@ public class ZonePump : ZoneAddForce
     protected override void Start()
     {
         if (forceMagnitude <= 0f)
-            forceMagnitude = 5.0f;
+            forceMagnitude = 1.5f;
         base.Start();
     }
 }

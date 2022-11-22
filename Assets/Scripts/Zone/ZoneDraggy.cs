@@ -7,7 +7,7 @@ public class ZoneDraggy : ZoneAddForce
     protected override void Start()
     {
         if (forceMagnitude >= 0f)
-            forceMagnitude = -0.1f;
+            forceMagnitude = -0.04f;
         base.Start();
     }
 

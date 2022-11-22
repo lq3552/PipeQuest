@@ -72,6 +72,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZoneBurning
       objectReference: {fileID: 0}
+    - target: {fileID: 3734320777546258107, guid: 0df16952fb73a4c6999326f1226f167f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5777292359175804650, guid: 0df16952fb73a4c6999326f1226f167f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0df16952fb73a4c6999326f1226f167f, type: 3}

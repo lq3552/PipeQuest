@@ -33,14 +33,21 @@ public class GasParticle : MonoBehaviour
             timer -= Time.deltaTime;
         }
 
-        if (IsTimerComplete())
+        if (IsTimerComplete)
         {
             actionOnTimer?.Invoke(gameObject);
         }
+
+        if (IsOutOfBoundary)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private bool IsTimerComplete()
-    {
-        return timer <= 0f;
-    }
+    private bool IsOutOfBoundary => transform.position.x > GameConfigs.GameBoundRight
+                                    || transform.position.x < GameConfigs.GameBoundLeft
+                                    || transform.position.y > GameConfigs.GameBoundTop
+                                    || transform.position.y < GameConfigs.GameBoundBottom;
+
+    private bool IsTimerComplete => timer < 0f;
 }

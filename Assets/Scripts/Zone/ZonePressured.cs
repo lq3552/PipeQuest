@@ -7,7 +7,7 @@ public class ZonePressured : ZoneAddForce
     protected override void Start()
     {
         if (forceMagnitude <= 0f)
-            forceMagnitude = 2.5f;
+            forceMagnitude = 0.75f;
         base.Start();
     }
 }

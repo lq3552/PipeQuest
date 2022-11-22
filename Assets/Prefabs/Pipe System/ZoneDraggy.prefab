@@ -72,6 +72,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZoneDraggy
       objectReference: {fileID: 0}
+    - target: {fileID: 1736324648908207891, guid: 77463d20bd13e4bd7963cc57c2c9ace9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1736324648908207900, guid: 77463d20bd13e4bd7963cc57c2c9ace9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -98,3 +103,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c3c5685ca1b4a9aaa32472d8ce98c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceMagnitude: 0
