@@ -11,7 +11,7 @@ public class ZoneReceiver : ZoneManipulateParticle
     {
         other.gameObject.GetComponent<GasParticle>().DestroyOnTimer(0.3f, ReceiveGas);
         count++;
-        //Debug.Log("Received:" + count);
+        Debug.Log("Received:" + count);
     }
 
     private void ReceiveGas(GameObject gasParticleObject)
