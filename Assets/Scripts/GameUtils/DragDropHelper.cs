@@ -6,10 +6,12 @@ using GameUtils;
 public class DragDropHelper : MonoBehaviour
 {
     private GameObject selectedGameObject;
+    private int layerMask;
 
     private void Start()
     {
         selectedGameObject = null;
+        layerMask = LayerMask.GetMask("Pipes");
     }
 
     void Update()
@@ -18,7 +20,7 @@ public class DragDropHelper : MonoBehaviour
         {
             if (!selectedGameObject)
             {
-                RaycastHit hit = UtilClass.CastRay();
+                RaycastHit hit = UtilClass.CastRay(layerMask);
 
                 // All clickable objects have parents according to the scene organization
                 if (hit.collider.transform.parent != null)

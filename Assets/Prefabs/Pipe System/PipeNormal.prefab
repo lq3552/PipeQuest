@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 942428707670591380}
   - component: {fileID: 942428707670591381}
   - component: {fileID: 942428707670591378}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EdgeNormal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 942428708303496381}
   - component: {fileID: 942428708303496378}
   - component: {fileID: 942428708303496379}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EdgeNormal (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 942428709081492382}
   - component: {fileID: 942428709081492383}
   - component: {fileID: 942428709081492380}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ZoneNormal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 942428707637145247}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PipeNormal
   m_TagString: Draggable
   m_Icon: {fileID: 0}

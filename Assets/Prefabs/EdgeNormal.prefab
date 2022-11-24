@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1240307538148451587}
   - component: {fileID: 1240307538148451586}
   - component: {fileID: 1240307538148451585}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EdgeNormal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

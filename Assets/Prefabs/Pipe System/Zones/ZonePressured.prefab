@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1736324648908207900}
   - component: {fileID: 1736324648908207901}
   - component: {fileID: -13156113317269678}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ZonePressured
   m_TagString: Untagged
   m_Icon: {fileID: 0}

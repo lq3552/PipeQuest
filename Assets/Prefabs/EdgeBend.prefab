@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6338171769495171649}
   - component: {fileID: 3195206534351341386}
   - component: {fileID: 8801734047511905860}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EdgeBend
   m_TagString: Untagged
   m_Icon: {fileID: 0}

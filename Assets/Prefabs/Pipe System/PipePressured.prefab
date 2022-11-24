@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4515633702820858703}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PipePressured
   m_TagString: Draggable
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 7930093484859969882}
   - component: {fileID: 3436730436106347193}
   - component: {fileID: 305653157595105585}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}

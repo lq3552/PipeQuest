@@ -23,12 +23,12 @@ namespace GameUtils
             return Camera.main.ScreenToWorldPoint(position);
         }
 
-        public static RaycastHit CastRay()
+        public static RaycastHit CastRay(int layerMask = Physics.DefaultRaycastLayers)
         {
             Vector3 worldMousePositionFar = GetMousePositionInWorld(Camera.main.farClipPlane);
             Vector3 worldMousePositionNear = GetMousePositionInWorld(Camera.main.nearClipPlane);
             RaycastHit hit;
-            Physics.Raycast(worldMousePositionNear, worldMousePositionFar - worldMousePositionNear, out hit);
+            Physics.Raycast(worldMousePositionNear, worldMousePositionFar - worldMousePositionNear, out hit, Mathf.Infinity, layerMask);
 
             return hit;
         }

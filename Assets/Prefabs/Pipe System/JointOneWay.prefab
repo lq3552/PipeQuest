@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3050712071178569123}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: JointOneWay
   m_TagString: Draggable
   m_Icon: {fileID: 0}
