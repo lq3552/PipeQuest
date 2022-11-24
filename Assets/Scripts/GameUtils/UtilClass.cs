@@ -33,8 +33,32 @@ namespace GameUtils
             return hit;
         }
 
+        public static GameObject SelectObject(int layerMask, string tag)
+        {
+            RaycastHit hit = UtilClass.CastRay(layerMask);
+            if (hit.collider.transform.parent != null)
+            {
+                if (hit.collider.transform.parent.gameObject.CompareTag(tag))
+                {
+                    return hit.collider.transform.parent.gameObject;
+                }
+                else if (hit.collider.gameObject.CompareTag(tag))
+                {
+                    return hit.collider.gameObject;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         // Create Text in the World
-        public static TextMesh CreateWorldText(string text, Transform parent = null, Vector3 localPosition = default(Vector3), int fontSize = 8, Color? color = null, TextAnchor textAnchor = TextAnchor.UpperLeft, TextAlignment textAlignment = TextAlignment.Left, int sortingOrder = sortingOrderDefault)
+        public static TextMesh CreateWorldText(string text, Transform parent = null, Vector3 localPosition = default(Vector3), int fontSize = 6, Color? color = null, TextAnchor textAnchor = TextAnchor.UpperLeft, TextAlignment textAlignment = TextAlignment.Left, int sortingOrder = sortingOrderDefault)
         {
             if (color == null) color = Color.white;
             return CreateWorldText(parent, text, localPosition, fontSize, (Color)color, textAnchor, textAlignment, sortingOrder);

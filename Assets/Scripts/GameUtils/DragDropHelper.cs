@@ -20,27 +20,7 @@ public class DragDropHelper : MonoBehaviour
         {
             if (!selectedGameObject)
             {
-                RaycastHit hit = UtilClass.CastRay(layerMask);
-
-                // All clickable objects have parents according to the scene organization
-                if (hit.collider.transform.parent != null)
-                {
-
-                    if (hit.collider.transform.parent.gameObject.CompareTag("Draggable"))
-                    {
-                        selectedGameObject = hit.collider.transform.parent.gameObject;
-                        Cursor.visible = false;
-                    }
-                    else if (hit.collider.gameObject.CompareTag("Draggable"))
-                    {
-                        selectedGameObject = hit.collider.gameObject;
-                        Cursor.visible = false;
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
+                selectedGameObject = UtilClass.SelectObject(layerMask, "Draggable");
             }
             else
             {
