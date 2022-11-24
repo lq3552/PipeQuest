@@ -15,9 +15,9 @@ public class GasParticleFiller : MonoBehaviour
     void Awake()
     {
         parentGasParticle = GameObject.Find("Natural Gas");
-        referencePosition = new Vector3(-0.16f, -0.54f, 0) + transform.position;
+        referencePosition = new Vector3(-0.2167f, -0.647f, 0) + transform.position;
         numLayers = 25;
-        numParticleAtLayer = 7;
+        numParticleAtLayer = 9;
         numParticleIncrement = 2;
         spatialInterval = 0.16f / 3.0f;
         SpawnGasParticleAtBegining();
