@@ -8,8 +8,28 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    static bool isGamePaused;
+
+    private void Awake()
+    {
+        PauseSession();
+    }
+
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        PauseSession();
+    }
+
+    public void StartSession()
+    {
+        Time.timeScale = 1.0f;
+        isGamePaused = false;
+    }
+
+    public void PauseSession()
+    {
+        Time.timeScale = 0f;
+        isGamePaused = true;
     }
 }
