@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameUtils;
 
 /// <summary>
 /// THIS IS A BAD SOLUTION WHEN NON-LINEAR PHYSICS (SUCH AS DRAG = K * VELOCITY) IS CONSIDERED! FINA A WAY TO CHANGE RESOLUTION INSTEAD OF SIZES

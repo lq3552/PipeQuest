@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameUtils;
 
 public class DragDropHelper : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class DragDropHelper : MonoBehaviour
         {
             if (!selectedGameObject)
             {
-                RaycastHit hit = CastRay();
+                RaycastHit hit = UtilClass.CastRay();
 
                 // All clickable objects have parents according to the scene organization
                 if (hit.collider.transform.parent != null)
@@ -49,31 +50,10 @@ public class DragDropHelper : MonoBehaviour
 
         if (selectedGameObject != null)
         {
-            Vector3 position = new Vector3(Input.mousePosition.x,
-                Input.mousePosition.y,
-                Camera.main.WorldToScreenPoint(selectedGameObject.transform.position).z);
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
-            selectedGameObject.transform.position = worldPosition;
+            selectedGameObject.transform.position =
+                UtilClass.GetMousePositionInWorld(
+                    Camera.main.WorldToScreenPoint(selectedGameObject.transform.position).z);
         }
 
-    }
-
-    private RaycastHit CastRay()
-    {
-        Vector3 screenMousePositionFar = new Vector3(
-            Input.mousePosition.x,
-            Input.mousePosition.y,
-            Camera.main.farClipPlane);
-        Vector3 screenMousePositionNear = new Vector3(
-            Input.mousePosition.x,
-            Input.mousePosition.y,
-            Camera.main.nearClipPlane);
-
-        Vector3 worldMousePositionFar = Camera.main.ScreenToWorldPoint(screenMousePositionFar);
-        Vector3 worldMousePositionNear = Camera.main.ScreenToWorldPoint(screenMousePositionNear);
-        RaycastHit hit;
-        Physics.Raycast(worldMousePositionNear, worldMousePositionFar - worldMousePositionNear, out hit);
-
-        return hit;
     }
 }
