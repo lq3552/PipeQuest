@@ -7,11 +7,13 @@ public class DragDropHelper : MonoBehaviour
 {
     private GameObject selectedGameObject;
     private int layerMask;
+    private Vector3 offset;
 
     private void Start()
     {
         selectedGameObject = null;
         layerMask = LayerMask.GetMask("Pipes");
+        offset = new Vector3(GridConfig.GridCellSize, GridConfig.GridCellSize) * (-0.5f);
     }
 
     void Update()
@@ -36,7 +38,8 @@ public class DragDropHelper : MonoBehaviour
         {
             selectedGameObject.transform.position =
                 UtilClass.GetMousePositionInWorld(
-                    Camera.main.WorldToScreenPoint(selectedGameObject.transform.position).z);
+                    Camera.main.WorldToScreenPoint(selectedGameObject.transform.position).z)
+                + offset;
         }
 
     }

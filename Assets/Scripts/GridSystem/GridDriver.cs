@@ -8,9 +8,9 @@ public class GridDriver : MonoBehaviour
     [SerializeField] private GridVisual gridVisual;
     private Grid<TileGridObject> grid;
 
-    private void Start()
+    private void Awake()
     {
-        grid = new Grid<TileGridObject>(11, 11, GridConfig.GridCellSize,
+        grid = new Grid<TileGridObject>(GridConfig.GridWidth, GridConfig.GridHeight, GridConfig.GridCellSize,
             new Vector3(GridConfig.GridCellSize, GridConfig.GridCellSize) * (-5.5f),
             (Grid<TileGridObject> g, int x, int y) => new TileGridObject(g, x, y));
         gridVisual.SetGrid(grid);
