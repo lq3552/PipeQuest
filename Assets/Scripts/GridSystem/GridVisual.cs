@@ -1,64 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameUtils;
 
 public class GridVisual : MonoBehaviour
 {
-    private Grid<bool> logicGrid;
-    private Grid<GameObject> visualGrid;
+    private Grid<TileGridObject> grid;
     [SerializeField] private GameObject tileMesh;
     [SerializeField] private Material[] tileMaterial = new Material[2];
-    private bool isLogicGridUpdated;
+    private bool isGridUpdated;
 
 
-    public void AttachLogicGrid(Grid<bool> grid)
+    public void SetGrid(Grid<TileGridObject> grid)
     {
-        logicGrid = grid;
-        visualGrid = new Grid<GameObject>(grid.Width, grid.Height, grid.CellSize,
-            grid.OriginPosition + new Vector3(grid.CellSize, grid.CellSize, 0.4f) * 0.5f);
-        CreateTilesVisual();
-        logicGrid.OnGridModified += Grid_OnGridModified;
+        this.grid = grid;
+        InitializeTilesVisual();
+        this.grid.OnGridModified += Grid_OnGridModified;
     }
 
-    private void CreateTilesVisual()
+    private void InitializeTilesVisual()
     {
-        for (int x = 0; x < visualGrid.Width; x++)
-            for (int y = 0; y < visualGrid.Height; y++)
+        Vector3 offset = new Vector3(0.5f * GridConfig.GridCellSize, 0.5f * GridConfig.GridCellSize, 0.2f);
+        for (int x = 0; x < grid.Width; x++)
+            for (int y = 0; y < grid.Height; y++)
             {
-                visualGrid.SetValue(x, y, Instantiate(tileMesh, visualGrid.GetWorldPosition(x, y),
+                grid.GetGridObject(x, y).SetTileMesh(
+                    Instantiate(tileMesh, grid.GetWorldPosition(x, y) + offset,
                     Quaternion.identity, transform));
             }
         UpdateTilesVisual();
+        grid.OnGridModified += Grid_OnGridModified;
     }
 
-    private void Grid_OnGridModified(object sender, Grid<bool>.OnGridModifiedCoordinates coordinates)
+    private void Grid_OnGridModified(object sender, Grid<TileGridObject>.OnGridModifiedCoordinates coordinates)
     {
-        isLogicGridUpdated = true;
+        isGridUpdated = true;
     }
 
     private void LateUpdate()
     {
-        if(isLogicGridUpdated)
+        if (isGridUpdated)
         {
-            isLogicGridUpdated = false;
+            isGridUpdated = false;
             UpdateTilesVisual();
         }
     }
 
-    private void UpdateSingleTileVisual(GameObject tile, Material material)
-    {
-        if (tile != null)
-            tile.GetComponent<MeshRenderer>().material = material;
-    }
-
     private void UpdateTilesVisual()
     {
-        for (int x = 0; x < logicGrid.Width; x++)
-            for (int y = 0; y < logicGrid.Height; y++)
+        for (int x = 0; x < grid.Width; x++)
+            for (int y = 0; y < grid.Height; y++)
             {
-                int materialIndex = logicGrid.GetValue(x, y) ? 1 : 0;
-                UpdateSingleTileVisual(visualGrid.GetValue(x, y), tileMaterial[materialIndex]);
+                TileGridObject tileGridObject = grid.GetGridObject(x, y);
+                if (tileGridObject != null)
+                {
+                    int materialIndex = tileGridObject.LogicValue ? 1 : 0;
+                    tileGridObject.SetTileVisual(tileMaterial[materialIndex]);
+                }
             }
     }
-        
+
 }
