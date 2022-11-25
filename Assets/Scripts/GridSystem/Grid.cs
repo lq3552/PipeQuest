@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,16 +11,25 @@ public class Grid<TGridObject>
     float cellSize;
     Vector3 originPosition;
     TGridObject[,] gridArray;
-    bool isDebugOn = true;
+
+    bool isDebugOn;
     TextMesh[,] debugTextArray;
 
-    public Grid(int width, int height, float cellSize, Vector3 originPosition)
+    public event EventHandler<OnGridModifiedCoordinates> OnGridModified;
+    public class OnGridModifiedCoordinates : EventArgs
+    {
+        public int x;
+        public int y;
+    };
+
+    public Grid(int width, int height, float cellSize, Vector3 originPosition, bool isDebugOn = false)
     {
         this.width = width;
         this.height = height;
         this.cellSize = cellSize;
         this.originPosition = originPosition;
         gridArray = new TGridObject[width, height];
+        this.isDebugOn = isDebugOn;
         debugTextArray = new TextMesh[width, height];
 
         if (isDebugOn)
@@ -37,11 +47,19 @@ public class Grid<TGridObject>
 
     }
 
-    public TGridObject[,] GridArray // array is reference type
+    public int Width
     {
         get
         {
-            return gridArray;
+            return width;
+        }
+    }
+
+    public int Height
+    {
+        get
+        {
+            return height;
         }
     }
 
@@ -53,12 +71,20 @@ public class Grid<TGridObject>
         }
     }
 
+    public Vector3 OriginPosition
+    {
+        get
+        {
+            return originPosition;
+        }
+    }
+
     public Vector3 GetWorldPosition(int x, int y)
     {
         return new Vector3(x, y) * cellSize + originPosition;
     }
 
-    public void GetXY(Vector3 worldPosition, out int x, out int y)
+    private void GetXY(Vector3 worldPosition, out int x, out int y)
     {
         x = Mathf.FloorToInt((worldPosition.x - originPosition.x) / cellSize);
         y = Mathf.FloorToInt((worldPosition.y - originPosition.y) / cellSize);
@@ -71,6 +97,7 @@ public class Grid<TGridObject>
             gridArray[x, y] = value;
             if (isDebugOn)
                 debugTextArray[x, y].text = gridArray[x, y].ToString();
+            OnGridModified?.Invoke(this, new OnGridModifiedCoordinates { x = x, y = y });
         }
     }
 
@@ -90,7 +117,7 @@ public class Grid<TGridObject>
         return default(TGridObject);
     }
 
-    public TGridObject GetValue(Vector3 worldPosition, int value)
+    public TGridObject GetValue(Vector3 worldPosition)
     {
         int x, y;
         GetXY(worldPosition, out x, out y);

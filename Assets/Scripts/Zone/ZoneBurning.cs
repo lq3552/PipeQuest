@@ -15,7 +15,7 @@ public class ZoneBurning : ZoneManipulateParticle
     private void BurnGas(GameObject gasParticleObject)
     {
         gasParticleObject.SetActive(false);
-        Instantiate<ParticleSystem>(burningEffect, transform.position, burningEffect.transform.rotation);
+        Instantiate<ParticleSystem>(burningEffect, transform.position, burningEffect.transform.rotation, transform);
     }
 
     protected override void HandleGasParticleOutOfZone(Collider other)

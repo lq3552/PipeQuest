@@ -19,7 +19,7 @@ namespace GameUtils
             Vector3 position = new Vector3(Input.mousePosition.x,
                 Input.mousePosition.y,
                 zetaInScreen);
-            
+
             return Camera.main.ScreenToWorldPoint(position);
         }
 
@@ -36,24 +36,25 @@ namespace GameUtils
         public static GameObject SelectObject(int layerMask, string tag)
         {
             RaycastHit hit = UtilClass.CastRay(layerMask);
+
+            if (!hit.collider)
+                return null;
+
             if (hit.collider.transform.parent != null)
             {
                 if (hit.collider.transform.parent.gameObject.CompareTag(tag))
-                {
                     return hit.collider.transform.parent.gameObject;
-                }
                 else if (hit.collider.gameObject.CompareTag(tag))
-                {
                     return hit.collider.gameObject;
-                }
                 else
-                {
                     return null;
-                }
             }
             else
             {
-                return null;
+                if (hit.collider.gameObject.CompareTag(tag))
+                    return hit.collider.gameObject;
+                else
+                    return null;
             }
         }
 

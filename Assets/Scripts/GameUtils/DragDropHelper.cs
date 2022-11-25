@@ -21,6 +21,8 @@ public class DragDropHelper : MonoBehaviour
             if (!selectedGameObject)
             {
                 selectedGameObject = UtilClass.SelectObject(layerMask, "Draggable");
+                if (selectedGameObject != null)
+                    Cursor.visible = false;
             }
             else
             {
