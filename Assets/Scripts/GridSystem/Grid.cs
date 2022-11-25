@@ -18,7 +18,7 @@ public class Grid<TGridObject>
     {
         public int x;
         public int y;
-    };
+    }
 
     public Grid(int width, int height, float cellSize, Vector3 originPosition, Func<Grid<TGridObject>, int, int, TGridObject> createGridObject = null, bool isDebugOn = false)
     {
