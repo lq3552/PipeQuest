@@ -69,10 +69,10 @@ namespace GameUtils
 
         static void Initialize()
         {
-            gameBoundTop = 5f;
-            gameBoundBottom = -5f;
-            gameBoundLeft = -5f;
-            gameBoundRight = 5f;
+            gameBoundTop = 4.675f;
+            gameBoundBottom = -4.675f;
+            gameBoundLeft = -4.675f;
+            gameBoundRight = 4.675f;
         }
     }
 }

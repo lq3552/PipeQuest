@@ -7,6 +7,7 @@ public class TileGridObject
     private Grid<TileGridObject> grid;
     private int x;
     private int y;
+    private Transform transform;
     private bool logicValue;
     private GameObject tileMesh;
 
@@ -15,8 +16,6 @@ public class TileGridObject
         this.grid = grid;
         this.x = x;
         this.y = y;
-        this.logicValue = false;
-        tileMesh = null;
     }
 
     public bool LogicValue
@@ -34,6 +33,25 @@ public class TileGridObject
             return tileMesh;
         }
     }
+
+    public bool IsConstructible
+    {
+        get
+        {
+            return transform == null;
+        }
+    }
+
+    public void SetTransform(Transform transform)
+    {
+        this.transform = transform;
+    }
+
+    public void ClearTransForm()
+    {
+        transform = null;
+    }
+
 
     public void SetLogicValue(bool value)
     {

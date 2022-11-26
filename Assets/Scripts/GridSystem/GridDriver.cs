@@ -5,6 +5,7 @@ using GameUtils;
 
 public class GridDriver : MonoBehaviour
 {
+    [SerializeField] private Transform testTransform;
     [SerializeField] private GridVisual gridVisual;
     private Grid<TileGridObject> grid;
 
@@ -20,9 +21,19 @@ public class GridDriver : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mousePosition = UtilClass.GetMousePositionInWorld(0.0f);
-            TileGridObject tileGridObject = grid.GetGridObject(mousePosition);
-            tileGridObject?.SetLogicValue(!tileGridObject.LogicValue);
+            Vector3 mousePosition = UtilClass.GetMousePositionInWorld(-Camera.main.transform.position.z);
+            grid.GetXY(mousePosition, out int x, out int y);
+            TileGridObject tileGridObject = grid.GetGridObject(x, y);
+
+            if (tileGridObject != null)
+            {
+                if (tileGridObject.IsConstructible)
+                {
+                    Transform builtTransform = Instantiate(testTransform, grid.GetWorldPosition(x, y), Quaternion.identity);
+                    tileGridObject.SetTransform(builtTransform);
+                    tileGridObject.SetLogicValue(true);
+                }
+            }
         }
     }
 }
