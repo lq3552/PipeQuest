@@ -33,11 +33,13 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         isGamePaused = false;
+        Physics.autoSyncTransforms = false;
     }
 
     public void PauseSession()
     {
         Time.timeScale = 0f;
         isGamePaused = true;
+        Physics.autoSyncTransforms = true;
     }
 }
