@@ -16,34 +16,64 @@ public class DragDropHelper : MonoBehaviour
         offset = new Vector3(GridConfig.GridCellSize, GridConfig.GridCellSize) * (-0.5f);
     }
 
-    void Update()
+    public GameObject SelectedObject
+    {
+        get
+        {
+            return selectedGameObject;
+        }
+    }
+
+    public void SelectObject()
     {
         if (!GameManager.IsGamePaused)
             return;
 
-        if (Input.GetMouseButtonDown(0)) // use new input system!
+        if (!selectedGameObject)
         {
-            if (!selectedGameObject)
+            selectedGameObject = UtilClass.SelectObject(layerMask, "Draggable");
+            if (selectedGameObject != null)
             {
-                selectedGameObject = UtilClass.SelectObject(layerMask, "Draggable");
-                if (selectedGameObject != null)
-                    Cursor.visible = false;
-            }
-            else
-            {
-                // drop the gameObject
-                selectedGameObject = null;
-                Cursor.visible = true;
+                Cursor.visible = false;
             }
         }
+    }
 
+    private void DeselectObject()
+    {
         if (selectedGameObject != null)
         {
-            selectedGameObject.transform.position =
-                UtilClass.GetMousePositionInWorld(
-                    Camera.main.WorldToScreenPoint(selectedGameObject.transform.position).z)
-                + offset;
+            selectedGameObject = null;
+            Cursor.visible = true;
         }
+    }
 
+    public void DropObject()
+    {
+        DeselectObject();
+    }
+
+    public void DropObject(Vector3 position)
+    {
+        MoveObject(position);
+        DeselectObject();
+    }
+
+    private void MoveObject(Vector3 position)
+    {
+        if (selectedGameObject != null)
+        {
+            selectedGameObject.transform.position = position;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (selectedGameObject != null)
+        {
+            MoveObject(UtilClass.GetMousePositionInWorld(
+                        Camera.main.WorldToScreenPoint(selectedGameObject.transform.position).z)
+                    + offset);
+        }
     }
 }

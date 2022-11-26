@@ -7,6 +7,7 @@ public class GridDriver : MonoBehaviour
 {
     [SerializeField] private Transform testTransform;
     [SerializeField] private GridVisual gridVisual;
+    [SerializeField] private DragDropHelper dragDropHelper;
     private Grid<TileGridObject> grid;
 
     private void Awake()
@@ -21,16 +22,20 @@ public class GridDriver : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            dragDropHelper.SelectObject();
             Vector3 mousePosition = UtilClass.GetMousePositionInWorld(-Camera.main.transform.position.z);
             grid.GetXY(mousePosition, out int x, out int y);
             TileGridObject tileGridObject = grid.GetGridObject(x, y);
+            GameObject objectToBeBuilt = dragDropHelper.SelectedObject;
 
-            if (tileGridObject != null)
+            if (tileGridObject != null &&  objectToBeBuilt!= null)
             {
                 if (tileGridObject.IsConstructible)
                 {
-                    Transform builtTransform = Instantiate(testTransform, grid.GetWorldPosition(x, y), Quaternion.identity);
-                    tileGridObject.SetTransform(builtTransform);
+                    //Transform builtTransform = Instantiate(testTransform, grid.GetWorldPosition(x, y), Quaternion.identity);
+                    dragDropHelper.DropObject(grid.GetWorldPosition(x, y));
+                    tileGridObject.SetTransform(objectToBeBuilt.transform);
+                    objectToBeBuilt = null;
                     tileGridObject.SetLogicValue(true);
                 }
             }

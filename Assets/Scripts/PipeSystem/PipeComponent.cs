@@ -5,5 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PipeComponent", menuName = "ScriptableObjects/PipeComponent")]
 public class PipeComponent : ScriptableObject
 {
-    public string myString;
+    public GameObject pipeComponentPrefab;
+    public int width;
+    public int height;
 }

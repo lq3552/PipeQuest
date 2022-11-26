@@ -8,7 +8,7 @@ public class TestScriptableObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(testScriptableObject.myString);
+        Instantiate(testScriptableObject.pipeComponentPrefab);
     }
 
 }
