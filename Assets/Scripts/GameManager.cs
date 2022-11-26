@@ -10,6 +10,14 @@ public class GameManager : MonoBehaviour
 {
     static bool isGamePaused;
 
+    public static bool IsGamePaused
+    {
+        get
+        {
+            return isGamePaused;
+        }
+    }
+
     private void Awake()
     {
         PauseSession();

@@ -18,6 +18,9 @@ public class DragDropHelper : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.IsGamePaused)
+            return;
+
         if (Input.GetMouseButtonDown(0)) // use new input system!
         {
             if (!selectedGameObject)
