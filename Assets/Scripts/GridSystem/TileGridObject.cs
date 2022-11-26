@@ -5,8 +5,8 @@ using UnityEngine;
 public class TileGridObject
 {
     private Grid<TileGridObject> grid;
-    private int x;
-    private int y;
+    public int x { get; private set; }
+    public int y { get; private set; }
     private Transform transform;
     private bool logicValue;
     private GameObject tileMesh;

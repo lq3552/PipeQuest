@@ -22,22 +22,39 @@ public class GridDriver : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            dragDropHelper.SelectObject();
             Vector3 mousePosition = UtilClass.GetMousePositionInWorld(-Camera.main.transform.position.z);
             grid.GetXY(mousePosition, out int x, out int y);
             TileGridObject tileGridObject = grid.GetGridObject(x, y);
-            GameObject objectToBeBuilt = dragDropHelper.SelectedObject;
 
-            if (tileGridObject != null &&  objectToBeBuilt!= null)
+            if (dragDropHelper.SelectedObject == null)
             {
-                if (tileGridObject.IsConstructible)
+                dragDropHelper.SelectObject();
+                // in case object is picked up from a tile
+                if (dragDropHelper.SelectedObject != null)
                 {
-                    //Transform builtTransform = Instantiate(testTransform, grid.GetWorldPosition(x, y), Quaternion.identity);
-                    dragDropHelper.DropObject(grid.GetWorldPosition(x, y));
-                    tileGridObject.SetTransform(objectToBeBuilt.transform);
-                    objectToBeBuilt = null;
-                    tileGridObject.SetLogicValue(true);
+                    tileGridObject?.ClearTransForm();
+                    tileGridObject?.SetLogicValue(false);
                 }
+            }
+            else
+            {
+                GameObject objectPicked = dragDropHelper.SelectedObject;
+                ConstructOnTile(tileGridObject, objectPicked);
+            }
+        }
+    }
+
+    private void ConstructOnTile(TileGridObject tileGridObject, GameObject objectToBeConstructed)
+    {
+        if (tileGridObject != null && objectToBeConstructed != null)
+        {
+            // place object onto the tile
+            if (tileGridObject.IsConstructible)
+            {
+                dragDropHelper.DropObject(grid.GetWorldPosition(tileGridObject.x, tileGridObject.y));
+                tileGridObject.SetTransform(objectToBeConstructed.transform);
+                objectToBeConstructed = null;
+                tileGridObject.SetLogicValue(true);
             }
         }
     }
