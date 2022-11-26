@@ -8,7 +8,6 @@ public class TileGridObject
     public int x { get; private set; }
     public int y { get; private set; }
     private Transform transform;
-    private bool logicValue;
     private GameObject tileMesh;
 
     public TileGridObject(Grid<TileGridObject> grid, int x, int y)
@@ -16,14 +15,6 @@ public class TileGridObject
         this.grid = grid;
         this.x = x;
         this.y = y;
-    }
-
-    public bool LogicValue
-    {
-        get
-        {
-            return logicValue;
-        }
     }
 
     public GameObject TileMesh
@@ -45,17 +36,12 @@ public class TileGridObject
     public void SetTransform(Transform transform)
     {
         this.transform = transform;
+        grid.TriggerGridObjectChanged(x, y);
     }
 
     public void ClearTransForm()
     {
         transform = null;
-    }
-
-
-    public void SetLogicValue(bool value)
-    {
-        logicValue = value;
         grid.TriggerGridObjectChanged(x, y);
     }
 
@@ -71,6 +57,6 @@ public class TileGridObject
 
     public override string ToString()
     {
-        return logicValue.ToString();
+        return IsConstructible.ToString();
     }
 }

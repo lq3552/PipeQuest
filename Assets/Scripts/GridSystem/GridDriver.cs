@@ -5,7 +5,6 @@ using GameUtils;
 
 public class GridDriver : MonoBehaviour
 {
-    [SerializeField] private Transform testTransform;
     [SerializeField] private GridVisual gridVisual;
     [SerializeField] private DragDropHelper dragDropHelper;
     private Grid<TileGridObject> grid;
@@ -32,8 +31,7 @@ public class GridDriver : MonoBehaviour
                 // in case object is picked up from a tile
                 if (dragDropHelper.SelectedObject != null)
                 {
-                    tileGridObject?.ClearTransForm();
-                    tileGridObject?.SetLogicValue(false);
+                    RecoverTileConstructibility(tileGridObject);
                 }
             }
             else
@@ -54,8 +52,15 @@ public class GridDriver : MonoBehaviour
                 dragDropHelper.DropObject(grid.GetWorldPosition(tileGridObject.x, tileGridObject.y));
                 tileGridObject.SetTransform(objectToBeConstructed.transform);
                 objectToBeConstructed = null;
-                tileGridObject.SetLogicValue(true);
             }
+        }
+    }
+
+    private void RecoverTileConstructibility(TileGridObject tileGridObject)
+    {
+        if (tileGridObject != null)
+        {
+            tileGridObject.ClearTransForm();
         }
     }
 }

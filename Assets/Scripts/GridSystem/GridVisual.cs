@@ -54,7 +54,7 @@ public class GridVisual : MonoBehaviour
                 TileGridObject tileGridObject = grid.GetGridObject(x, y);
                 if (tileGridObject != null)
                 {
-                    int materialIndex = tileGridObject.LogicValue ? 1 : 0;
+                    int materialIndex = tileGridObject.IsConstructible ? 0 : 1;
                     tileGridObject.SetTileVisual(tileMaterial[materialIndex]);
                 }
             }
