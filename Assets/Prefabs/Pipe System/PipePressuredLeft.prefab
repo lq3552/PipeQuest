@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 497343434516430424, guid: b9ab13ebb512247568daae4d3da028bb,
+        type: 3}
+      propertyPath: pipeComponent
+      value: 
+      objectReference: {fileID: 11400000, guid: 77f5c6088458145218611f57f406b465,
+        type: 2}
     - target: {fileID: 4594344551924830526, guid: b9ab13ebb512247568daae4d3da028bb,
         type: 3}
       propertyPath: m_Mesh

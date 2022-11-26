@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Gas
   - Draggable
-  - Tile
   layers:
   - Default
   - TransparentFX

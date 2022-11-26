@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8992291565051843329, guid: c14b70a9512ca4149ac3668ef32630e9,
+        type: 3}
+      propertyPath: pipeComponent
+      value: 
+      objectReference: {fileID: 11400000, guid: 409231000aa7f404caa3e4a8d5353529,
+        type: 2}
     - target: {fileID: 1913783798953891539, guid: c14b70a9512ca4149ac3668ef32630e9,
         type: 3}
       propertyPath: m_LocalPosition.y

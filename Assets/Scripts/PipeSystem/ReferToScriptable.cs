@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ReferToScriptable : MonoBehaviour
 {
-    [SerializeField] PipeComponent pipeComponent;
+    [SerializeField] PipeMetaData pipeComponent;
 
-    public PipeComponent GetReference()
+    public PipeMetaData GetReference()
     {
         return pipeComponent;
     }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f10e578c57c4a2ea08f730bdfb548c, type: 3}
+  m_Name: PipePressureUp
+  m_EditorClassIdentifier: 
+  pipeComponentPrefab: {fileID: 8027102187167910698, guid: b9ab13ebb512247568daae4d3da028bb,
+    type: 3}
+  width: 1
+  height: 2

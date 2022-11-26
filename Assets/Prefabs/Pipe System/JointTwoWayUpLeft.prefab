@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3050712071178569123}
+  - component: {fileID: 7634371176403866606}
   m_Layer: 6
   m_Name: JointTwoWayUpLeft
   m_TagString: Draggable
@@ -34,6 +35,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7634371176403866606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3050712071178569122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8e53a77cfab4f9da75fd9be913e8f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipeComponent: {fileID: 11400000, guid: b70317c952c6649029c3b2366b8a8a95, type: 2}
 --- !u!1001 &2373727316528485743
 PrefabInstance:
   m_ObjectHideFlags: 0

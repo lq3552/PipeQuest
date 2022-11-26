@@ -122,5 +122,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6081167004989441148, guid: d0cb5042011944195bedb8388f1287d2,
+        type: 3}
+      propertyPath: pipeComponent
+      value: 
+      objectReference: {fileID: 11400000, guid: 05a303f42ecd24da995ce0b78ac4e057,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0cb5042011944195bedb8388f1287d2, type: 3}
