@@ -13,10 +13,8 @@ public class PipeManager : MonoBehaviour
         pipeInventory = new PipeInventory();
         for(int i = 0; i < initialInventoryInfo.PipeAmountList.Count; i++)
         {
-            Debug.Log(i + " " + initialInventoryInfo.PipeAmountList[i]);
             pipeInventory.AddPipe(new Pipe { PipeMetaData = initialInventoryInfo.PipeTypeList[i], Amount = initialInventoryInfo.PipeAmountList[i]});
         }
         uiPipeInventory.SetPipeInventory(pipeInventory);
     }
-
 }

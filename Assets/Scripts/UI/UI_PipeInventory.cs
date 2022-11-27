@@ -21,23 +21,33 @@ public class UI_PipeInventory : MonoBehaviour
     public void SetPipeInventory(PipeInventory pipeInventory)
     {
         this.pipeInventory = pipeInventory;
+        pipeInventory.OnItemListChanged += PipeInventory_OnItemListChanged;
+        RefreshInventoryItems();
+    }
+
+    private void PipeInventory_OnItemListChanged(object sender, System.EventArgs e)
+    {
         RefreshInventoryItems();
     }
 
     private void RefreshInventoryItems()
     {
+        foreach(Transform child in container)
+        {
+            if (child == pipeSlot)
+                continue;
+            Destroy(child.gameObject);
+        }
         int x = 0;
         int y = 0;
         float pipeSlotCellSize = 100f;
-        foreach (Pipe pipe in pipeInventory.GetPipeList())
+        foreach (KeyValuePair<PipeMetaData, int> pipe in pipeInventory.GetPipeHash())
         {
-            Debug.Log(y + " " + pipe);
-            Debug.Log(container);
-            Debug.Log(pipeSlot);
             RectTransform pipeSlotRectTransform = Instantiate(pipeSlot, container).GetComponent<RectTransform>();
             pipeSlotRectTransform.gameObject.SetActive(true);
-            pipeSlotRectTransform.Find("PipeAmount").gameObject.GetComponent<TMP_Text>().text = pipe.Amount.ToString();
-            pipeSlotRectTransform.Find("PipeIcon").gameObject.GetComponent<Image>().sprite = pipe.PipeMetaData.pipeComponentSprite;
+            pipeSlotRectTransform.Find("PipeAmount").gameObject.GetComponent<TMP_Text>().text = pipe.Value.ToString();
+            pipeSlotRectTransform.Find("PipeIcon").gameObject.GetComponent<Image>().sprite = pipe.Key.pipeComponentSprite;
+            pipeSlotRectTransform.Find("PipeMetaData").gameObject.GetComponent<MetadataReference>().SetMetaData(pipe.Key);
             pipeSlotRectTransform.anchoredPosition = new Vector2(x * pipeSlotCellSize, y * pipeSlotCellSize);
             x++;
             if(x == uiPipeInventoryWidth)

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8e53a77cfab4f9da75fd9be913e8f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pipeComponent: {fileID: 11400000, guid: b70317c952c6649029c3b2366b8a8a95, type: 2}
+  pipeMetaData: {fileID: 11400000, guid: b70317c952c6649029c3b2366b8a8a95, type: 2}
 --- !u!1001 &2373727316528485743
 PrefabInstance:
   m_ObjectHideFlags: 0

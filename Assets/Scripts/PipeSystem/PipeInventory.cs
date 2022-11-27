@@ -1,23 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PipeInventory
 {
-    private List<Pipe> pipeList;
+    public event EventHandler OnItemListChanged;
+
+    private Dictionary<PipeMetaData, int> pipeHash;
 
     public PipeInventory()
     {
-        pipeList = new List<Pipe>();
+        pipeHash = new Dictionary<PipeMetaData, int>();
     }
 
     public void AddPipe(Pipe pipe)
     {
-        pipeList.Add(pipe);
+        if (pipeHash.ContainsKey(pipe.PipeMetaData))
+        {
+            pipeHash[pipe.PipeMetaData] += pipe.Amount;
+        }
+        else
+        {
+            pipeHash.Add(pipe.PipeMetaData, pipe.Amount);
+            OnItemListChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 
-    public List<Pipe> GetPipeList()
+    public Dictionary<PipeMetaData, int> GetPipeHash()
     {
-        return pipeList;
+        return pipeHash;
     }
 }

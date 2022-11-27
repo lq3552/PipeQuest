@@ -84,6 +84,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3038236712950122391, guid: f7562e9290ae149cfb90614294ddaf47,
         type: 3}
+      propertyPath: pipeMetaData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e010975af1764d54981de2144d70d58,
+        type: 2}
+    - target: {fileID: 3038236712950122391, guid: f7562e9290ae149cfb90614294ddaf47,
+        type: 3}
       propertyPath: pipeComponent
       value: 
       objectReference: {fileID: 11400000, guid: 8e010975af1764d54981de2144d70d58,

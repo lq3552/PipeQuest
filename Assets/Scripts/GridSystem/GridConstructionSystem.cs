@@ -23,7 +23,7 @@ public class GridConstructionSystem : MonoBehaviour
         GameObject[] immobileObjects = GameObject.FindGameObjectsWithTag("Immobile");
         foreach (GameObject immobileObject in immobileObjects)
         {
-            int[,] spatialSpan = immobileObject.GetComponent<ReferToScriptable>().GetReference().GetSpatialSpan();
+            int[,] spatialSpan = immobileObject.GetComponent<MetadataReference>().GetMetaData().GetSpatialSpan();
             TileGridObject tileGridObject = grid.GetGridObject(immobileObject.transform.position + anchorFloatError);
             for (int i = 0; i < spatialSpan.GetLength(0); i++)
             {
@@ -61,7 +61,7 @@ public class GridConstructionSystem : MonoBehaviour
     private void AcquireObjectPickedMetaData()
     {
         objectPicked = dragDropHelper.SelectedObject;
-        objectSpatialSpan = objectPicked?.GetComponent<ReferToScriptable>().GetReference().GetSpatialSpan();
+        objectSpatialSpan = objectPicked?.GetComponent<MetadataReference>().GetMetaData().GetSpatialSpan();
     }
 
     private void ConstructOnTile(Vector3 position)
