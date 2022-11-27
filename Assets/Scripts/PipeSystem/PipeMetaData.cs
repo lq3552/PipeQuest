@@ -7,6 +7,7 @@ using UnityEngine;
 public class PipeMetaData : ScriptableObject
 {
     public GameObject pipeComponentPrefab;
+    public Sprite pipeComponentSprite;
     public int width;
     public int height;
 

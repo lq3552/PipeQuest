@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pipeComponentPrefab: {fileID: 7193185250372149711, guid: b304f9bf94184440a8123d797342034e,
     type: 3}
+  pipeComponentSprite: {fileID: 21300000, guid: 723dab63d74de4192ab3c6bbdb2c7079,
+    type: 3}
   width: 2
   height: 1
