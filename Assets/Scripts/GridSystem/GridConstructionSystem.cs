@@ -25,11 +25,10 @@ public class GridConstructionSystem : MonoBehaviour
         {
             int[,] spatialSpan = immobileObject.GetComponent<ReferToScriptable>().GetReference().GetSpatialSpan();
             TileGridObject tileGridObject = grid.GetGridObject(immobileObject.transform.position + anchorFloatError);
-            Debug.Log(spatialSpan.GetLength(0));
             for (int i = 0; i < spatialSpan.GetLength(0); i++)
             {
                 grid.GetGridObject(tileGridObject.x + spatialSpan[i, 0],
-                    tileGridObject.y + spatialSpan[i, 1]).SetTransform(immobileObject.transform);
+                    tileGridObject.y + spatialSpan[i, 1])?.SetTransform(immobileObject.transform);
             }
         }
     }
