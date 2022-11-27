@@ -31,6 +31,9 @@ public class UI_PipeInventory : MonoBehaviour
         float pipeSlotCellSize = 100f;
         foreach (Pipe pipe in pipeInventory.GetPipeList())
         {
+            Debug.Log(y + " " + pipe);
+            Debug.Log(container);
+            Debug.Log(pipeSlot);
             RectTransform pipeSlotRectTransform = Instantiate(pipeSlot, container).GetComponent<RectTransform>();
             pipeSlotRectTransform.gameObject.SetActive(true);
             pipeSlotRectTransform.Find("PipeAmount").gameObject.GetComponent<TMP_Text>().text = pipe.Amount.ToString();

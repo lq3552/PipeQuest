@@ -8,7 +8,7 @@ public class PipeManager : MonoBehaviour
     private PipeInventory pipeInventory;
     [SerializeField] private InitialInventoryInfo initialInventoryInfo;
 
-    private void Awake()
+    private void Start()
     {
         pipeInventory = new PipeInventory();
         for(int i = 0; i < initialInventoryInfo.PipeAmountList.Count; i++)
