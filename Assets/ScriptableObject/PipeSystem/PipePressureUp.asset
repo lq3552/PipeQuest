@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f10e578c57c4a2ea08f730bdfb548c, type: 3}
-  m_Name: JointTwoWayUpRight
+  m_Name: PipePressureUp
   m_EditorClassIdentifier: 
-  pipeComponentPrefab: {fileID: 3044999043833791943, guid: bd1baa54743aa491dab9078a97d4c4b7,
-    type: 3}
+  pipeType: 17
   width: 1
-  height: 1
+  height: 2

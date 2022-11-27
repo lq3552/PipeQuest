@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f10e578c57c4a2ea08f730bdfb548c, type: 3}
-  m_Name: PipeDraggyVertical
+  m_Name: JointTwoWayUpRight
   m_EditorClassIdentifier: 
-  pipeComponentPrefab: {fileID: 3423052781055365636, guid: 1b84d6665519b432fbe20b2c8cba195b,
-    type: 3}
+  pipeType: 9
   width: 1
-  height: 2
+  height: 1

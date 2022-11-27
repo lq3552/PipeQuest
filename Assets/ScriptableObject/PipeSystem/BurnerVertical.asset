@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f10e578c57c4a2ea08f730bdfb548c, type: 3}
-  m_Name: Pump
+  m_Name: BurnerVertical
   m_EditorClassIdentifier: 
-  pipeComponentPrefab: {fileID: 3200818970025929487, guid: 07d06c2d1f93f4eb2a78beb412fe0b25,
-    type: 3}
-  width: 5
+  pipeType: 1
+  width: 1
   height: 2

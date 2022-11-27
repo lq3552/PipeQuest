@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f10e578c57c4a2ea08f730bdfb548c, type: 3}
-  m_Name: JointThreeWayRight
+  m_Name: Pump
   m_EditorClassIdentifier: 
-  pipeComponentPrefab: {fileID: 3277784129789486450, guid: d0cb5042011944195bedb8388f1287d2,
-    type: 3}
-  width: 1
-  height: 1
+  pipeType: 18
+  width: 5
+  height: 2
