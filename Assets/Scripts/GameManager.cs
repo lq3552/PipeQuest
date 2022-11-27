@@ -42,4 +42,9 @@ public class GameManager : MonoBehaviour
         isGamePaused = true;
         Physics.autoSyncTransforms = true;
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
