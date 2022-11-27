@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Gas
   - Draggable
+  - Immobile
   layers:
   - Default
   - TransparentFX

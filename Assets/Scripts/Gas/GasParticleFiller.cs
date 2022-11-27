@@ -12,10 +12,10 @@ public class GasParticleFiller : MonoBehaviour
     int numParticleIncrement;
     float spatialInterval;
 
-    void Awake()
+    private void Start()
     {
         parentGasParticle = GameObject.Find("Natural Gas");
-        referencePosition = new Vector3(-0.2167f, -0.647f, 0) + transform.position;
+        referencePosition = new Vector3(1.9083f, 0.203f, 0) + transform.position;
         numLayers = 25;
         numParticleAtLayer = 9;
         numParticleIncrement = 2;
@@ -28,7 +28,7 @@ public class GasParticleFiller : MonoBehaviour
     /// based on reference position, layers, spatial interval
     /// number of particles at the first layer and increment per layer
     /// </summary>
-    void SpawnGasParticleAtBegining()
+    private void SpawnGasParticleAtBegining()
     {
         for (int i = 0; i < numLayers; i++)
         {

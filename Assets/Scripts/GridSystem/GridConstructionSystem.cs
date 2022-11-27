@@ -19,6 +19,19 @@ public class GridConstructionSystem : MonoBehaviour
             (Grid<TileGridObject> g, int x, int y) => new TileGridObject(g, x, y));
         gridVisual.SetGrid(grid);
         anchorFloatError = new Vector3(GridConfig.GridCellSize, GridConfig.GridCellSize) * 0.1f;
+
+        GameObject[] immobileObjects = GameObject.FindGameObjectsWithTag("Immobile");
+        foreach (GameObject immobileObject in immobileObjects)
+        {
+            int[,] spatialSpan = immobileObject.GetComponent<ReferToScriptable>().GetReference().GetSpatialSpan();
+            TileGridObject tileGridObject = grid.GetGridObject(immobileObject.transform.position + anchorFloatError);
+            Debug.Log(spatialSpan.GetLength(0));
+            for (int i = 0; i < spatialSpan.GetLength(0); i++)
+            {
+                grid.GetGridObject(tileGridObject.x + spatialSpan[i, 0],
+                    tileGridObject.y + spatialSpan[i, 1]).SetTransform(immobileObject.transform);
+            }
+        }
     }
 
     private void Update()
@@ -32,9 +45,7 @@ public class GridConstructionSystem : MonoBehaviour
                 if (objectPicked != null)
                 {
                     // in case object is picked up from a tile
-                    grid.GetXY(objectPicked.transform.position + anchorFloatError, out int x, out int y);
-                    TileGridObject tileGridObject = grid.GetGridObject(x, y);
-                    RecoverTileConstructibility(tileGridObject);
+                    RecoverTileConstructibility(objectPicked.transform.position + anchorFloatError);
                 }
             }
             else
@@ -42,10 +53,7 @@ public class GridConstructionSystem : MonoBehaviour
                 AcquireObjectPickedMetaData();
                 if (objectPicked != null)
                 {
-                    Vector3 mousePosition = UtilClass.GetMousePositionInWorld(-Camera.main.transform.position.z);
-                    grid.GetXY(mousePosition, out int x, out int y);
-                    TileGridObject tileGridObject = grid.GetGridObject(x, y);
-                    ConstructOnTile(tileGridObject);
+                    ConstructOnTile(UtilClass.GetMousePositionInWorld(-Camera.main.transform.position.z));
                 }
             }
         }
@@ -57,17 +65,16 @@ public class GridConstructionSystem : MonoBehaviour
         objectSpatialSpan = objectPicked?.GetComponent<ReferToScriptable>().GetReference().GetSpatialSpan();
     }
 
-    private void ConstructOnTile(TileGridObject tileGridObject)
+    private void ConstructOnTile(Vector3 position)
     {
+        TileGridObject tileGridObject = grid.GetGridObject(position);
         if (tileGridObject != null)
         {
             bool isConstructible = true;
             for (int i = 0; i < objectSpatialSpan.GetLength(0); i++)
             {
-                TileGridObject neighborTileGridObject =
-                    grid.GetGridObject(tileGridObject.x + objectSpatialSpan[i, 0], tileGridObject.y + objectSpatialSpan[i, 1]);
-                if (neighborTileGridObject == null ||
-                    (neighborTileGridObject != null && !neighborTileGridObject.IsConstructible))
+                TileGridObject neighborTileGridObject = grid.GetGridObject(tileGridObject.x + objectSpatialSpan[i, 0], tileGridObject.y + objectSpatialSpan[i, 1]);
+                if (neighborTileGridObject == null || (neighborTileGridObject != null && !neighborTileGridObject.IsConstructible))
                 {
                     isConstructible = false;
                     break;
@@ -92,8 +99,9 @@ public class GridConstructionSystem : MonoBehaviour
         }
     }
 
-    private void RecoverTileConstructibility(TileGridObject tileGridObject)
+    private void RecoverTileConstructibility(Vector3 position)
     {
+        TileGridObject tileGridObject = grid.GetGridObject(position);
         if (tileGridObject == null)
             return;
 

@@ -9,7 +9,7 @@ public class DragDropHelper : MonoBehaviour
     private int layerMask;
     private Vector3 cursorOffset;
 
-    private void Start()
+    private void Awake()
     {
         selectedGameObject = null;
         layerMask = LayerMask.GetMask("Pipes");
