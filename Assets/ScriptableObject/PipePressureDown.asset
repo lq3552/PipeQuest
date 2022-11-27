@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f10e578c57c4a2ea08f730bdfb548c, type: 3}
-  m_Name: PipeNormalVertical
+  m_Name: PipePressureDown
   m_EditorClassIdentifier: 
-  pipeType: 13
+  pipeComponentPrefab: {fileID: 4515633702820858702, guid: 77b9c1ad4de3a4a489c3f5b2be9f1840,
+    type: 3}
   width: 1
   height: 2

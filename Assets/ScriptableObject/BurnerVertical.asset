@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f10e578c57c4a2ea08f730bdfb548c, type: 3}
-  m_Name: JointThreeWayLeft
+  m_Name: BurnerVertical
   m_EditorClassIdentifier: 
-  pipeType: 3
+  pipeComponentPrefab: {fileID: 4749647111144358116, guid: c14b70a9512ca4149ac3668ef32630e9,
+    type: 3}
   width: 1
-  height: 1
+  height: 2

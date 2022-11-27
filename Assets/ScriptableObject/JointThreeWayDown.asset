@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f10e578c57c4a2ea08f730bdfb548c, type: 3}
-  m_Name: PipePressureDown
+  m_Name: JointThreeWayDown
   m_EditorClassIdentifier: 
-  pipeType: 14
+  pipeComponentPrefab: {fileID: 7364027186135310597, guid: 372a1c53547ce4375befd317ce77b197,
+    type: 3}
   width: 1
-  height: 2
+  height: 1

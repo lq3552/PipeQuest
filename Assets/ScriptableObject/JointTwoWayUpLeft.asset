@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f10e578c57c4a2ea08f730bdfb548c, type: 3}
-  m_Name: JointThreeWayUp
+  m_Name: JointTwoWayUpLeft
   m_EditorClassIdentifier: 
-  pipeType: 5
+  pipeComponentPrefab: {fileID: 3050712071178569122, guid: 2cdd81a20576547a78db7c5b93725d61,
+    type: 3}
   width: 1
   height: 1

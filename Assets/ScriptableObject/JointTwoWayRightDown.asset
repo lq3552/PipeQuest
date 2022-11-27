@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f10e578c57c4a2ea08f730bdfb548c, type: 3}
-  m_Name: JointThreeWayDown
+  m_Name: JointTwoWayRightDown
   m_EditorClassIdentifier: 
-  pipeType: 2
+  pipeComponentPrefab: {fileID: 3975059581780266337, guid: ec2526922c1ca4bb5a8ab53881c991ce,
+    type: 3}
   width: 1
   height: 1
