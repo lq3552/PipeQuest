@@ -16,7 +16,7 @@ public class PipeManager : MonoBehaviour
             PipeInventory.pipeInventory.AddPipe(initialInventoryInfo.PipeTypeList[i], initialInventoryInfo.PipeAmountList[i]);
         }
         uiPipeInventory.SetPipeInventory();
-        DragDropHelper.dragDropHelper = gameObject.GetComponent<DragDropHelper>();
+        pipeManager = this;
     }
 
     public void RecyclePipe()

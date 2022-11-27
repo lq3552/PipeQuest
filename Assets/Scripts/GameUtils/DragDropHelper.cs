@@ -16,6 +16,7 @@ public class DragDropHelper : MonoBehaviour
         selectedGameObject = null;
         layerMask = LayerMask.GetMask("Pipes");
         cursorOffset = new Vector3(GridConfig.GridCellSize, GridConfig.GridCellSize) * (-0.5f);
+        dragDropHelper = this;
     }
 
     public GameObject SelectedObject
