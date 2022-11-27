@@ -6,7 +6,6 @@ using TMPro;
 
 public class UI_PipeInventory : MonoBehaviour
 {
-    private PipeInventory pipeInventory;
     private int uiPipeInventoryWidth;
     private Transform container;
     private Transform pipeSlot;
@@ -18,10 +17,9 @@ public class UI_PipeInventory : MonoBehaviour
         pipeSlot = container.Find("PipeSlot");
     }
 
-    public void SetPipeInventory(PipeInventory pipeInventory)
+    public void SetPipeInventory()
     {
-        this.pipeInventory = pipeInventory;
-        pipeInventory.OnItemListChanged += PipeInventory_OnItemListChanged;
+        PipeInventory.pipeInventory.OnItemListChanged += PipeInventory_OnItemListChanged;
         RefreshInventoryItems();
     }
 
@@ -32,7 +30,7 @@ public class UI_PipeInventory : MonoBehaviour
 
     private void RefreshInventoryItems()
     {
-        foreach(Transform child in container)
+        foreach (Transform child in container)
         {
             if (child == pipeSlot)
                 continue;
@@ -41,7 +39,7 @@ public class UI_PipeInventory : MonoBehaviour
         int x = 0;
         int y = 0;
         float pipeSlotCellSize = 100f;
-        foreach (KeyValuePair<PipeMetaData, int> pipe in pipeInventory.GetPipeHash())
+        foreach (KeyValuePair<PipeMetaData, int> pipe in PipeInventory.pipeInventory.GetPipeHash())
         {
             RectTransform pipeSlotRectTransform = Instantiate(pipeSlot, container).GetComponent<RectTransform>();
             pipeSlotRectTransform.gameObject.SetActive(true);
@@ -50,7 +48,7 @@ public class UI_PipeInventory : MonoBehaviour
             pipeSlotRectTransform.Find("PipeMetaData").gameObject.GetComponent<MetadataReference>().SetMetaData(pipe.Key);
             pipeSlotRectTransform.anchoredPosition = new Vector2(x * pipeSlotCellSize, y * pipeSlotCellSize);
             x++;
-            if(x == uiPipeInventoryWidth)
+            if (x == uiPipeInventoryWidth)
             {
                 x = 0;
                 y--;

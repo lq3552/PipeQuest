@@ -7,6 +7,7 @@ public class GridConstructionSystem : MonoBehaviour
 {
     [SerializeField] private GridVisual gridVisual;
     [SerializeField] private DragDropHelper dragDropHelper;
+    [SerializeField] private PipeManager pipeManager;
     private Grid<TileGridObject> grid;
     private GameObject objectPicked;
     private int[,] objectSpatialSpan;
@@ -94,7 +95,7 @@ public class GridConstructionSystem : MonoBehaviour
         }
         else
         {
-            dragDropHelper.DropObject();
+            pipeManager.RecyclePipe();
         }
     }
 

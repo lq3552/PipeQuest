@@ -15,9 +15,4 @@ public class MetadataReference : MonoBehaviour
     {
         this.pipeMetaData = pipeMetaData;
     }
-
-    public void InstantiateObjectFromMetaData(Transform pipeTransform, Transform parent)
-    {
-        Instantiate(pipeMetaData.pipeComponentPrefab, pipeTransform.position, Quaternion.identity, parent);
-    }
 }

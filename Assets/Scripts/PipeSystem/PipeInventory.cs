@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PipeInventory
 {
+    public static PipeInventory pipeInventory = new PipeInventory();
+
     public event EventHandler OnItemListChanged;
 
     private Dictionary<PipeMetaData, int> pipeHash;
@@ -16,13 +18,40 @@ public class PipeInventory
 
     public void AddPipe(Pipe pipe)
     {
-        if (pipeHash.ContainsKey(pipe.PipeMetaData))
+        AddPipe(pipe.PipeMetaData, pipe.Amount);
+    }
+
+    public void AddPipe(PipeMetaData pipeMetaData, int amount)
+    {
+        if (amount == 0)
+            return;
+
+        if (pipeHash.ContainsKey(pipeMetaData))
         {
-            pipeHash[pipe.PipeMetaData] += pipe.Amount;
+            pipeHash[pipeMetaData] += amount;
         }
         else
         {
-            pipeHash.Add(pipe.PipeMetaData, pipe.Amount);
+            pipeHash.Add(pipeMetaData, amount);
+        }
+        OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void RemovePipe(Pipe pipe)
+    {
+        RemovePipe(pipe.PipeMetaData, pipe.Amount);
+    }
+
+    public void RemovePipe(PipeMetaData pipeMetaData, int amount)
+    {
+        if (amount == 0)
+            return;
+
+        if (pipeHash.ContainsKey(pipeMetaData))
+        {
+            pipeHash[pipeMetaData] -= amount;
+            if (pipeHash[pipeMetaData] <= 0)
+                pipeHash.Remove(pipeMetaData);
             OnItemListChanged?.Invoke(this, EventArgs.Empty);
         }
     }

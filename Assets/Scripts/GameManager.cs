@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    public static GameManager gameManager;
     static bool isGamePaused;
 
     public static bool IsGamePaused

@@ -18,6 +18,10 @@ public class DragDropHelper : MonoBehaviour
 
     public GameObject SelectedObject
     {
+        set
+        {
+            selectedGameObject = value;
+        }
         get
         {
             return selectedGameObject;
