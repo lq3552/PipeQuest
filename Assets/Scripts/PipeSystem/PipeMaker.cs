@@ -7,7 +7,6 @@ public class PipeMaker : MonoBehaviour
 {
     private Transform parent;
     Vector3 offset;
-    [SerializeField] private DragDropHelper dragDropHelper;
 
     // I don't like the logic and mouse position come out of nowhere; and crazy interaction between dragDropHelper and this class
 
@@ -21,7 +20,7 @@ public class PipeMaker : MonoBehaviour
     {
         PipeMetaData pipeMetaData = gameObject.GetComponent<MetadataReference>().GetMetaData();
         Instantiate(pipeMetaData.pipeComponentPrefab, UtilClass.GetMousePositionInWorld(-Camera.main.transform.position.z), pipeMetaData.pipeComponentPrefab.transform.rotation, parent);
-        dragDropHelper.SelectObject();
+        DragDropHelper.dragDropHelper.SelectObject();
         PipeInventory.pipeInventory.RemovePipe(pipeMetaData, 1);
     }
 }

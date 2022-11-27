@@ -5,6 +5,8 @@ using GameUtils;
 
 public class DragDropHelper : MonoBehaviour
 {
+    public static DragDropHelper dragDropHelper;
+
     private GameObject selectedGameObject;
     private int layerMask;
     private Vector3 cursorOffset;
