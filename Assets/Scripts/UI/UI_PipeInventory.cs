@@ -14,21 +14,15 @@ public class UI_PipeInventory : MonoBehaviour
     private void Awake()
     {
         uiPipeInventoryWidth = 1;
+        container = transform.Find("Container");
+        pipeSlot = container.Find("PipeSlot");
     }
 
     public void SetPipeInventory()
     {
         pipeInventory = PipeInventory.pipeInventory;
-        container = transform.Find("Container");
-        pipeSlot = container.Find("PipeSlot");
         RefreshInventoryItems();
         pipeInventory.OnItemListChanged += PipeInventory_OnItemListChanged;
-    }
-
-    public void OnDestroy()
-    {
-        if (pipeInventory != null)
-            pipeInventory.OnItemListChanged -= PipeInventory_OnItemListChanged;
     }
 
     private void PipeInventory_OnItemListChanged(object sender, System.EventArgs e)
