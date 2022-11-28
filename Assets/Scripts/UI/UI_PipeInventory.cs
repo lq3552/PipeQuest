@@ -6,6 +6,7 @@ using TMPro;
 
 public class UI_PipeInventory : MonoBehaviour
 {
+    private PipeInventory pipeInventory;
     private int uiPipeInventoryWidth;
     private Transform container;
     private Transform pipeSlot;
@@ -19,7 +20,8 @@ public class UI_PipeInventory : MonoBehaviour
 
     public void SetPipeInventory()
     {
-        PipeInventory.pipeInventory.OnItemListChanged += PipeInventory_OnItemListChanged;
+        pipeInventory = PipeInventory.pipeInventory;
+        pipeInventory.OnItemListChanged += PipeInventory_OnItemListChanged;
         RefreshInventoryItems();
     }
 
@@ -39,7 +41,7 @@ public class UI_PipeInventory : MonoBehaviour
         int x = 0;
         int y = 0;
         float pipeSlotCellSize = 100f;
-        foreach (KeyValuePair<PipeMetaData, int> pipe in PipeInventory.pipeInventory.GetPipeHash())
+        foreach (KeyValuePair<PipeMetaData, int> pipe in pipeInventory.GetPipeHash())
         {
             RectTransform pipeSlotRectTransform = Instantiate(pipeSlot, container).GetComponent<RectTransform>();
             pipeSlotRectTransform.gameObject.SetActive(true);

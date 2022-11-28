@@ -441,7 +441,6 @@ GameObject:
   m_Component:
   - component: {fileID: 89601743}
   - component: {fileID: 89601744}
-  - component: {fileID: 89601742}
   m_Layer: 0
   m_Name: Pipe Manager
   m_TagString: Untagged
@@ -449,18 +448,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &89601742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89601741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea69336320c064a4b8eed330a2cc3144, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &89601743
 Transform:
   m_ObjectHideFlags: 0
@@ -475,7 +462,7 @@ Transform:
   m_Children:
   - {fileID: 1336386449}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &89601744
 MonoBehaviour:
@@ -797,7 +784,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &145914946
 MonoBehaviour:
@@ -2202,6 +2189,51 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1057199287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1057199289}
+  - component: {fileID: 1057199288}
+  m_Layer: 0
+  m_Name: Drag Drop Helper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1057199288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057199287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea69336320c064a4b8eed330a2cc3144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1057199289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057199287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.9717153, y: 0.19139393, z: -9.954158}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1180832053}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1059343840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,6 +2487,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 43395093}
   gasReceiver: {fileID: 125345148}
+--- !u!1 &1180832052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1180832053}
+  - component: {fileID: 1180832054}
+  m_Layer: 0
+  m_Name: Initial Inventory Info
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1180832053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180832052}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1057199289}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1180832054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180832052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc6182c8a738423a904455c26d576af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PipeTypeList>k__BackingField:
+  - {fileID: 11400000, guid: 8e010975af1764d54981de2144d70d58, type: 2}
+  - {fileID: 11400000, guid: 77f5c6088458145218611f57f406b465, type: 2}
+  - {fileID: 11400000, guid: 1e4e321a83c33468a8aad1e231d76b92, type: 2}
+  - {fileID: 11400000, guid: b70317c952c6649029c3b2366b8a8a95, type: 2}
+  - {fileID: 11400000, guid: 4a54f5d87d7c8417b95ba3b00a5e6041, type: 2}
+  - {fileID: 11400000, guid: 78df962805549498e952c51bd026082f, type: 2}
+  <PipeAmountList>k__BackingField: 010000000100000002000000020000000100000001000000
 --- !u!1 &1264858517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3573,5 +3657,5 @@ Transform:
   - {fileID: 144626959}
   - {fileID: 119915708}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

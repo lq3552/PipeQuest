@@ -13,10 +13,15 @@ public class DragDropHelper : MonoBehaviour
 
     private void Awake()
     {
+        if(dragDropHelper != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        dragDropHelper = this;
         selectedGameObject = null;
         layerMask = LayerMask.GetMask("Pipes");
         cursorOffset = new Vector3(GridConfig.GridCellSize, GridConfig.GridCellSize) * (-0.5f);
-        dragDropHelper = this;
     }
 
     public GameObject SelectedObject

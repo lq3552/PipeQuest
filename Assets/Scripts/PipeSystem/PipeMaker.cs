@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PipeMaker : MonoBehaviour
 {
+    private PipeInventory pipeInventory;
+    private DragDropHelper dragDropHelper;
     private Transform parent;
     Vector3 offset;
 
@@ -12,6 +14,9 @@ public class PipeMaker : MonoBehaviour
 
     private void Start()
     {
+        pipeInventory = PipeInventory.pipeInventory;
+        dragDropHelper = DragDropHelper.dragDropHelper;
+
         parent = GameObject.Find("Game Objects").transform;
         offset = new Vector3(GridConfig.GridCellSize, GridConfig.GridCellSize) * (-0.5f);
     }
@@ -20,7 +25,7 @@ public class PipeMaker : MonoBehaviour
     {
         PipeMetaData pipeMetaData = gameObject.GetComponent<MetadataReference>().GetMetaData();
         Instantiate(pipeMetaData.pipeComponentPrefab, UtilClass.GetMousePositionInWorld(-Camera.main.transform.position.z), pipeMetaData.pipeComponentPrefab.transform.rotation, parent);
-        DragDropHelper.dragDropHelper.SelectObject();
-        PipeInventory.pipeInventory.RemovePipe(pipeMetaData, 1);
+        dragDropHelper.SelectObject();
+        pipeInventory.RemovePipe(pipeMetaData, 1);
     }
 }

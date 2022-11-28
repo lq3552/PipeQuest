@@ -7,12 +7,17 @@ public class GridConstructionSystem : MonoBehaviour
 {
     [SerializeField] private GridVisual gridVisual;
     private Grid<TileGridObject> grid;
+    private DragDropHelper dragDropHelper;
+    private PipeManager pipeManager;
     private GameObject objectPicked;
     private int[,] objectSpatialSpan;
     private Vector3 anchorFloatError;
 
-    private void Awake()
+    private void Start()
     {
+        dragDropHelper = DragDropHelper.dragDropHelper;
+        pipeManager = PipeManager.pipeManager;
+
         grid = new Grid<TileGridObject>(GridConfig.GridWidth, GridConfig.GridHeight, GridConfig.GridCellSize,
             new Vector3(GridConfig.GridCellSize, GridConfig.GridCellSize) * (-5.5f),
             (Grid<TileGridObject> g, int x, int y) => new TileGridObject(g, x, y));
@@ -36,9 +41,9 @@ public class GridConstructionSystem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (DragDropHelper.dragDropHelper.SelectedObject == null)
+            if (dragDropHelper.SelectedObject == null)
             {
-                DragDropHelper.dragDropHelper.SelectObject();
+                dragDropHelper.SelectObject();
                 AcquireObjectPickedMetaData();
                 if (objectPicked != null)
                 {
@@ -59,7 +64,7 @@ public class GridConstructionSystem : MonoBehaviour
 
     private void AcquireObjectPickedMetaData()
     {
-        objectPicked = DragDropHelper.dragDropHelper.SelectedObject;
+        objectPicked = dragDropHelper.SelectedObject;
         objectSpatialSpan = objectPicked?.GetComponent<MetadataReference>().GetMetaData().GetSpatialSpan();
     }
 
@@ -82,7 +87,7 @@ public class GridConstructionSystem : MonoBehaviour
             // place object onto the tile
             if (isConstructible)
             {
-                DragDropHelper.dragDropHelper.DropObject(grid.GetWorldPosition(tileGridObject.x, tileGridObject.y));
+                dragDropHelper.DropObject(grid.GetWorldPosition(tileGridObject.x, tileGridObject.y));
                 for (int i = 0; i < objectSpatialSpan.GetLength(0); i++)
                 {
                     grid.GetGridObject(tileGridObject.x + objectSpatialSpan[i, 0],
@@ -93,7 +98,7 @@ public class GridConstructionSystem : MonoBehaviour
         }
         else
         {
-            PipeManager.pipeManager.RecyclePipe();
+            pipeManager.RecyclePipe();
         }
     }
 
