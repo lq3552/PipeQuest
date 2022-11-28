@@ -56,6 +56,11 @@ public class PipeInventory
         }
     }
 
+    public void EmptyPipeInventory()
+    {
+        pipeHash.Clear();
+    }
+
     public Dictionary<PipeMetaData, int> GetPipeHash()
     {
         return pipeHash;

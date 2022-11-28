@@ -28,6 +28,11 @@ public class PipeManager : MonoBehaviour
         InitializePipeInventory();
     }
 
+    private void OnDestroy()
+    {
+        pipeInventory.EmptyPipeInventory();
+    }
+
     public void InitializePipeInventory()
     {
         for (int i = 0; i < initialInventoryInfo.PipeAmountList.Count; i++)
