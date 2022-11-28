@@ -6,7 +6,7 @@ using TMPro;
 
 public class TimerHandler : MonoBehaviour
 {
-    private int time;
+    private float time;
     [SerializeField] private TMP_Text timerText;
     const string timerPrefix = "Time: ";
 
@@ -17,11 +17,12 @@ public class TimerHandler : MonoBehaviour
 
     private void Update()
     {
+        time += Time.deltaTime;
         DisplayTimer();
     }
 
     private void DisplayTimer()
     {
-        timerText.text = timerPrefix + Mathf.FloorToInt(Time.time);
+        timerText.text = timerPrefix + Mathf.FloorToInt(time);
     }
 }

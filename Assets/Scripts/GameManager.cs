@@ -22,12 +22,18 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         PauseSession();
+        gameManager = this;
     }
 
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         PauseSession();
+    }
+
+    public void LoadScene(string level)
+    {
+        SceneManager.LoadScene(level);
     }
 
     public void StartSession()

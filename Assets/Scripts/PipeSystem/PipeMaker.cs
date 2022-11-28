@@ -23,9 +23,12 @@ public class PipeMaker : MonoBehaviour
 
     public void InstantiatePipeFromPipeMetaData()
     {
-        PipeMetaData pipeMetaData = gameObject.GetComponent<MetadataReference>().GetMetaData();
-        Instantiate(pipeMetaData.pipeComponentPrefab, UtilClass.GetMousePositionInWorld(-Camera.main.transform.position.z), pipeMetaData.pipeComponentPrefab.transform.rotation, parent);
-        dragDropHelper.SelectObject();
-        pipeManager.PipeInventory.RemovePipe(pipeMetaData, 1);
+        if (GameManager.IsGamePaused)
+        {
+            PipeMetaData pipeMetaData = gameObject.GetComponent<MetadataReference>().GetMetaData();
+            Instantiate(pipeMetaData.pipeComponentPrefab, UtilClass.GetMousePositionInWorld(-Camera.main.transform.position.z), pipeMetaData.pipeComponentPrefab.transform.rotation, parent);
+            dragDropHelper.SelectObject();
+            pipeManager.PipeInventory.RemovePipe(pipeMetaData, 1);
+        }
     }
 }
