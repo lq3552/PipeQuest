@@ -6,7 +6,8 @@ public class PipeManager : MonoBehaviour
 {
     public static PipeManager pipeManager;
 
-    private PipeInventory pipeInventory;
+    public PipeInventory PipeInventory { private set; get; }
+
     private DragDropHelper dragDropHelper;
     [SerializeField] private UI_PipeInventory uiPipeInventory;
     [SerializeField] private InitialInventoryInfo initialInventoryInfo;
@@ -19,12 +20,13 @@ public class PipeManager : MonoBehaviour
             return;
         }
         pipeManager = this;
+
+        PipeInventory = new PipeInventory();
     }
 
     private void Start()
     {
         dragDropHelper = DragDropHelper.dragDropHelper;
-        pipeInventory = PipeInventory.pipeInventory;
         InitializePipeInventory();
     }
 
@@ -32,14 +34,14 @@ public class PipeManager : MonoBehaviour
     {
         for (int i = 0; i < initialInventoryInfo.PipeAmountList.Count; i++)
         {
-            pipeInventory.AddPipe(initialInventoryInfo.PipeTypeList[i], initialInventoryInfo.PipeAmountList[i]);
+            PipeInventory.AddPipe(initialInventoryInfo.PipeTypeList[i], initialInventoryInfo.PipeAmountList[i]);
         }
         uiPipeInventory.SetPipeInventory();
     }
 
     public void RecyclePipe()
     {
-        pipeInventory.AddPipe(dragDropHelper.SelectedObject.GetComponent<MetadataReference>().GetMetaData(), 1);
+        PipeInventory.AddPipe(dragDropHelper.SelectedObject.GetComponent<MetadataReference>().GetMetaData(), 1);
         Destroy(DragDropHelper.dragDropHelper.SelectedObject);
         dragDropHelper.DropObject();
     }

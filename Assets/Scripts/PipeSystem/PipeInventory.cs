@@ -3,23 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PipeInventory : MonoBehaviour
+public class PipeInventory
 {
-    public static PipeInventory pipeInventory;
-
     public event EventHandler OnItemListChanged;
 
     private Dictionary<PipeMetaData, int> pipeHash;
 
-    private void Awake()
+    public PipeInventory()
     {
-        if(pipeInventory != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        pipeInventory = this;
-
         pipeHash = new Dictionary<PipeMetaData, int>();
     }
 
