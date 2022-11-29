@@ -6,29 +6,59 @@ using GameUtils;
 public class GridVisual : MonoBehaviour
 {
     private Grid<TileGridObject> grid;
-    [SerializeField] private GameObject tileMesh;
-    [SerializeField] private Material[] tileMaterial = new Material[2];
     private bool isGridUpdated;
+    Mesh gridMesh;
+    Vector2 uvBeginConstructible;
+    Vector2 uvBeginInconstructible;
+    Vector2 uvBegin;
+    const float uvExtent = 0.32f;
 
 
     public void SetGrid(Grid<TileGridObject> grid)
     {
         this.grid = grid;
-        InitializeTilesVisual();
+        gridMesh = new Mesh();
+        uvBeginConstructible = new Vector2(0.67f, 0.34f);
+        uvBeginInconstructible = new Vector2(0.34f, 0.0f);
+        gameObject.GetComponent<MeshFilter>().mesh = gridMesh;
+        InitializeTileVisual();
         this.grid.OnGridModified += Grid_OnGridModified;
     }
 
-    private void InitializeTilesVisual()
+    private void CreateTileMesh()
     {
-        Vector3 offset = new Vector3(0.5f * GridConfig.GridCellSize, 0.5f * GridConfig.GridCellSize, 0.2f);
+        Vector3[] vertices = new Vector3[4 * (grid.Width * grid.Height)];
+        int[] triangles = new int[6 * (grid.Width * grid.Height)];
+        Vector3 offset = grid.OriginPosition + new Vector3(0, 0, 0.1f);
+
+
         for (int x = 0; x < grid.Width; x++)
+        {
             for (int y = 0; y < grid.Height; y++)
             {
-                grid.GetGridObject(x, y).SetTileMesh(
-                    Instantiate(tileMesh, grid.GetWorldPosition(x, y) + offset,
-                    Quaternion.identity, transform));
+                int index = x * grid.Height + y;
+                vertices[index * 4 + 0] = new Vector3(x * grid.CellSize, y * grid.CellSize) + offset;
+                vertices[index * 4 + 1] = new Vector3(x * grid.CellSize, (y + 1) * grid.CellSize) + offset;
+                vertices[index * 4 + 2] = new Vector3((x + 1) * grid.CellSize, (y + 1) * grid.CellSize) + offset;
+                vertices[index * 4 + 3] = new Vector3((x + 1) * grid.CellSize, y * grid.CellSize) + offset;
+
+                triangles[index * 6 + 0] = index * 4 + 0;
+                triangles[index * 6 + 1] = index * 4 + 1;
+                triangles[index * 6 + 2] = index * 4 + 2;
+                triangles[index * 6 + 3] = index * 4 + 0;
+                triangles[index * 6 + 4] = index * 4 + 2;
+                triangles[index * 6 + 5] = index * 4 + 3;
             }
-        UpdateTilesVisual();
+        }
+
+        gridMesh.vertices = vertices;
+        gridMesh.triangles = triangles;
+    }
+
+    private void InitializeTileVisual()
+    {
+        CreateTileMesh();
+        UpdateTileVisual();
         grid.OnGridModified += Grid_OnGridModified;
     }
 
@@ -42,22 +72,27 @@ public class GridVisual : MonoBehaviour
         if (isGridUpdated)
         {
             isGridUpdated = false;
-            UpdateTilesVisual();
+            UpdateTileVisual();
         }
     }
 
-    private void UpdateTilesVisual()
+    private void UpdateTileVisual()
     {
+        Vector2[] uv = new Vector2[4 * (grid.Width * grid.Height)];
+
         for (int x = 0; x < grid.Width; x++)
+        {
             for (int y = 0; y < grid.Height; y++)
             {
+                int index = x * grid.Height + y;
                 TileGridObject tileGridObject = grid.GetGridObject(x, y);
-                if (tileGridObject != null)
-                {
-                    int materialIndex = tileGridObject.IsConstructible ? 0 : 1;
-                    tileGridObject.SetTileVisual(tileMaterial[materialIndex]);
-                }
+                uvBegin = tileGridObject.IsConstructible ? uvBeginConstructible : uvBeginInconstructible;
+                uv[index * 4 + 0] = new Vector2(uvBegin.x, uvBegin.y);
+                uv[index * 4 + 1] = new Vector2(uvBegin.x, uvBegin.y + uvExtent);
+                uv[index * 4 + 2] = new Vector2(uvBegin.x + uvExtent, uvBegin.y + uvExtent);
+                uv[index * 4 + 3] = new Vector2(uvBegin.x + uvExtent, uvBegin.y);
             }
+        }
+        gridMesh.uv = uv;
     }
-
 }
