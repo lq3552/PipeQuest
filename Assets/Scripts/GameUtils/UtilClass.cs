@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace GameUtils
 {
@@ -16,8 +17,8 @@ namespace GameUtils
 
         public static Vector3 GetMousePositionInWorld(float zetaInScreen)
         {
-            Vector3 position = new Vector3(Input.mousePosition.x,
-                Input.mousePosition.y,
+            Vector3 position = new Vector3(Mouse.current.position.ReadValue().x,
+                Mouse.current.position.ReadValue().y,
                 zetaInScreen);
 
             return Camera.main.ScreenToWorldPoint(position);
