@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Initializes the game and controls the scence flow
@@ -34,6 +35,21 @@ public class GameManager : MonoBehaviour
     public void LoadScene(string level)
     {
         SceneManager.LoadScene(level);
+    }
+
+    public void PauseOrUnpauseSession(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        if(isGamePaused)
+        {
+            StartSession();
+        }
+        else
+        {
+            PauseSession();
+        }
     }
 
     public void StartSession()

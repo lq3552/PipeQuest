@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using GameUtils;
 
 public class GridConstructionSystem : MonoBehaviour
@@ -37,27 +38,27 @@ public class GridConstructionSystem : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void PickOrDropPipes(InputAction.CallbackContext context)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!context.performed)
+            return;
+
+        if (dragDropHelper.SelectedObject == null)
         {
-            if (dragDropHelper.SelectedObject == null)
+            dragDropHelper.SelectObject();
+            AcquireObjectPickedMetaData();
+            if (objectPicked != null)
             {
-                dragDropHelper.SelectObject();
-                AcquireObjectPickedMetaData();
-                if (objectPicked != null)
-                {
-                    // in case object is picked up from a tile
-                    RecoverTileConstructibility(objectPicked.transform.position + anchorFloatError);
-                }
+                // in case object is picked up from a tile
+                RecoverTileConstructibility(objectPicked.transform.position + anchorFloatError);
             }
-            else
+        }
+        else
+        {
+            AcquireObjectPickedMetaData();
+            if (objectPicked != null)
             {
-                AcquireObjectPickedMetaData();
-                if (objectPicked != null)
-                {
-                    ConstructOnTile(UtilClass.GetMousePositionInWorld(-Camera.main.transform.position.z));
-                }
+                ConstructOnTile(UtilClass.GetMousePositionInWorld(-Camera.main.transform.position.z));
             }
         }
     }
