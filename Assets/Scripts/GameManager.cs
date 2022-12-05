@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         levelManager = LevelManager.levelManager;
-        Debug.Log("Set " + LevelManager.levelManager);
     }
 
     public void RestartScene()
