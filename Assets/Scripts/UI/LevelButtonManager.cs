@@ -33,7 +33,6 @@ public class LevelButtonManager : MonoBehaviour
         float left = levelButtonTemplate.localPosition.x;
         float top = levelButtonTemplate.localPosition.y;
 
-        Debug.Log("Get Unlocked: " + levelManager.UnlockedLevel);
         int x = 0;
         int y = 0;
         for (int i = 0; i < LevelManager.MaxLevel; i++)
@@ -63,11 +62,6 @@ public class LevelButtonManager : MonoBehaviour
                 y--;
             }
         }
-    }
-
-    private void Listener()
-    {
-        Debug.Log("clicked!");
     }
 
 }

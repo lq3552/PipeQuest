@@ -33,25 +33,17 @@ public class LevelManager : MonoBehaviour
                 unlockedLevel = currentLevel;
             }
         }
-        else
-        {
-            toBeContinuedLevel = ToBeContinuedLevel == 0 ? 1 : ToBeContinuedLevel;
-            unlockedLevel = unlockedLevel == 0 ? 1 : unlockedLevel;
-        }
-        Debug.Log("Refreshing unlocked " + unlockedLevel + " / " + currentLevel + " and to be continued " + toBeContinuedLevel);
     }
 
     private void LoadLevelInfo()
     {
-        toBeContinuedLevel = PlayerPrefs.GetInt("toBeContinuedLevel");
-        unlockedLevel = PlayerPrefs.GetInt("unlockedLevel");
-        Debug.Log("Loading unlocked " + unlockedLevel + " / " + currentLevel + " and to be continued " + toBeContinuedLevel);
+        toBeContinuedLevel = PlayerPrefs.GetInt("toBeContinuedLevel", 1);
+        unlockedLevel = PlayerPrefs.GetInt("unlockedLevel", 1);
     }
 
     public void SaveLevelInfo()
     {
         /* save to file */
-        Debug.Log("Saving unlocked " + unlockedLevel + " / " + currentLevel + " and to be continued " + toBeContinuedLevel);
         PlayerPrefs.SetInt("unlockedLevel", unlockedLevel);
         PlayerPrefs.SetInt("toBeContinuedLevel", toBeContinuedLevel);
         PlayerPrefs.Save();
