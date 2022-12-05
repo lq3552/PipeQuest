@@ -73,3 +73,8 @@ crashlytics-build.properties
 
 # Specific for Mac
 .DS_store
+Assets/save.txt
+Assets/save.txt.meta
+Assets/Saves.meta
+Assets/Saves/save.txt
+Assets/Saves/save.txt.meta

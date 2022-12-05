@@ -1,3 +1,4 @@
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,17 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager levelManager;
 
+    private string saveFolder;
+
     [SerializeField] private int currentLevel;
-    private int toBeContinuedLevel;
-    private int unlockedLevel;
     public const int MaxLevel = 8;
+    LevelInfo levelInfo;
+
+    private class LevelInfo
+    {
+        public int toBeContinuedLevel;
+        public int unlockedLevel;
+    }
 
     private void Awake()
     {
@@ -19,6 +27,13 @@ public class LevelManager : MonoBehaviour
             return;
         }
         levelManager = this;
+
+        saveFolder = Application.dataPath + "/Saves";
+        if (!Directory.Exists(saveFolder))
+        {
+            Directory.CreateDirectory(saveFolder);
+        }
+
         LoadLevelInfo();
         UnlockNewLevel();
     }
@@ -27,33 +42,38 @@ public class LevelManager : MonoBehaviour
     {
         if (currentLevel > 0)
         {
-            toBeContinuedLevel = currentLevel;
-            if (unlockedLevel < currentLevel)
+            levelInfo.toBeContinuedLevel = currentLevel;
+            if (levelInfo.unlockedLevel < currentLevel)
             {
-                unlockedLevel = currentLevel;
+                levelInfo.unlockedLevel = currentLevel;
             }
         }
     }
 
     private void LoadLevelInfo()
     {
-        toBeContinuedLevel = PlayerPrefs.GetInt("toBeContinuedLevel", 1);
-        unlockedLevel = PlayerPrefs.GetInt("unlockedLevel", 1);
+        if (File.Exists(saveFolder + "/save.txt"))
+        {
+            string saveString = File.ReadAllText(saveFolder + "/save.txt");
+            levelInfo = JsonUtility.FromJson<LevelInfo>(saveString);
+        }
+        else
+        {
+            levelInfo = new LevelInfo{ toBeContinuedLevel = 1, unlockedLevel = 1 };
+        }
     }
 
     public void SaveLevelInfo()
     {
-        /* save to file */
-        PlayerPrefs.SetInt("unlockedLevel", unlockedLevel);
-        PlayerPrefs.SetInt("toBeContinuedLevel", toBeContinuedLevel);
-        PlayerPrefs.Save();
+        string saveString = JsonUtility.ToJson(levelInfo);
+        File.WriteAllText(saveFolder + "/save.txt", saveString);
     }
 
     public void ClearLevelInfo()
     {
         currentLevel = 1;
-        toBeContinuedLevel = 1;
-        unlockedLevel = 1;
+        levelInfo.toBeContinuedLevel = 1;
+        levelInfo.unlockedLevel = 1;
     }
 
     public int CurrentLevel
@@ -68,7 +88,7 @@ public class LevelManager : MonoBehaviour
     {
         get
         {
-            return toBeContinuedLevel;
+            return levelInfo.toBeContinuedLevel;
         }
     }
 
@@ -76,7 +96,7 @@ public class LevelManager : MonoBehaviour
     {
         get
         {
-            return unlockedLevel;
+            return levelInfo.unlockedLevel;
         }
     }
 }
