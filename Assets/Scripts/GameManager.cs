@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
     static bool isGamePaused;
 
+    private LevelManager levelManager;
+
     public static bool IsGamePaused
     {
         get
@@ -22,8 +24,19 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        PauseSession();
+        if (gameManager != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         gameManager = this;
+        PauseSession();
+    }
+
+    private void Start()
+    {
+        levelManager = LevelManager.levelManager;
+        Debug.Log("Set " + LevelManager.levelManager);
     }
 
     public void RestartScene()
@@ -32,17 +45,27 @@ public class GameManager : MonoBehaviour
         PauseSession();
     }
 
-    public void LoadScene(string level)
+    public void LoadScene(string scene)
     {
-        SceneManager.LoadScene(level);
+        if (scene == "Menu")
+            levelManager.SaveLevelInfo();
+        SceneManager.LoadScene(scene);
     }
+
+    public void LoadSceneByLevel(int level)
+    {
+        string scene = "Level" + level;
+        LoadScene(scene);
+    }
+
+    public void LoadNextScene() => LoadSceneByLevel(levelManager.CurrentLevel + 1);
 
     public void PauseOrUnpauseSession(InputAction.CallbackContext context)
     {
         if (!context.performed)
             return;
 
-        if(isGamePaused)
+        if (isGamePaused)
         {
             StartSession();
         }
@@ -68,6 +91,8 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+        if (SceneManager.GetActiveScene().name != "Menu")
+            levelManager.SaveLevelInfo();
         Application.Quit();
     }
 }
