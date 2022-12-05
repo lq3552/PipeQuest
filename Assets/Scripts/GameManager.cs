@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextScene() => LoadSceneByLevel(levelManager.CurrentLevel + 1);
 
+    public void ContinueSession() => LoadSceneByLevel(levelManager.ToBeContinuedLevel);
+
     public void PauseOrUnpauseSession(InputAction.CallbackContext context)
     {
         if (!context.performed)

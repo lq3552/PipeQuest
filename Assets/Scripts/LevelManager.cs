@@ -20,21 +20,41 @@ public class LevelManager : MonoBehaviour
         }
         levelManager = this;
         LoadLevelInfo();
-        unlockedLevel = 3;
+        UnlockNewLevel();
     }
 
-    public void LoadLevelInfo()
+    private void UnlockNewLevel()
     {
-        /* load from file */
+        if (currentLevel > 0)
+        {
+            toBeContinuedLevel = currentLevel;
+            if (unlockedLevel < currentLevel)
+            {
+                unlockedLevel = currentLevel;
+            }
+        }
+        else
+        {
+            toBeContinuedLevel = ToBeContinuedLevel == 0 ? 1 : ToBeContinuedLevel;
+            unlockedLevel = unlockedLevel == 0 ? 1 : unlockedLevel;
+        }
+        Debug.Log("Refreshing unlocked " + unlockedLevel + " / " + currentLevel + " and to be continued " + toBeContinuedLevel);
+    }
+
+    private void LoadLevelInfo()
+    {
+        toBeContinuedLevel = PlayerPrefs.GetInt("toBeContinuedLevel");
+        unlockedLevel = PlayerPrefs.GetInt("unlockedLevel");
+        Debug.Log("Loading unlocked " + unlockedLevel + " / " + currentLevel + " and to be continued " + toBeContinuedLevel);
     }
 
     public void SaveLevelInfo()
     {
-        toBeContinuedLevel = currentLevel;
-        if (unlockedLevel < currentLevel)
-            unlockedLevel = currentLevel;
         /* save to file */
-        Debug.Log("Saving " + currentLevel + "!");
+        Debug.Log("Saving unlocked " + unlockedLevel + " / " + currentLevel + " and to be continued " + toBeContinuedLevel);
+        PlayerPrefs.SetInt("unlockedLevel", unlockedLevel);
+        PlayerPrefs.SetInt("toBeContinuedLevel", toBeContinuedLevel);
+        PlayerPrefs.Save();
     }
 
     public void ClearLevelInfo()
@@ -49,6 +69,14 @@ public class LevelManager : MonoBehaviour
         get
         {
             return currentLevel;
+        }
+    }
+
+    public int ToBeContinuedLevel
+    {
+        get
+        {
+            return toBeContinuedLevel;
         }
     }
 

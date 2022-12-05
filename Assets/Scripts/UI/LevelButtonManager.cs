@@ -33,6 +33,7 @@ public class LevelButtonManager : MonoBehaviour
         float left = levelButtonTemplate.localPosition.x;
         float top = levelButtonTemplate.localPosition.y;
 
+        Debug.Log("Get Unlocked: " + levelManager.UnlockedLevel);
         int x = 0;
         int y = 0;
         for (int i = 0; i < LevelManager.MaxLevel; i++)
@@ -48,6 +49,11 @@ public class LevelButtonManager : MonoBehaviour
                 button.interactable = true;
                 int level = i + 1;
                 button.onClick.AddListener(() => {gameManager.LoadSceneByLevel(level);});
+
+                if(level == levelManager.ToBeContinuedLevel)
+                {
+                    levelButtonRectTransform.GetComponent<Image>().color = Color.green;
+                }
             }
 
             x++;
