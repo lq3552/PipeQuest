@@ -29,14 +29,15 @@ public class GasParticle : MonoBehaviour
 
     private void Update()
     {
-        if (timer > 0f)
-        {
-            timer -= Time.deltaTime;
-        }
+
 
         if (IsTimerComplete)
         {
             actionOnTimer?.Invoke(gameObject);
+        }
+        else
+        {
+            timer -= Time.deltaTime;
         }
 
         if (IsOutOfBoundary)

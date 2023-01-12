@@ -8,7 +8,7 @@ public class ScoreHandler : MonoBehaviour
 {
     private int score;
     [SerializeField] private TMP_Text scoreText;
-    [SerializeField] private ZoneReceiver gasReceiver;
+    [SerializeField] private List<ZoneReceiver> gasReceiverList;
     const string ScorePrefix = "Score: ";
 
     private void Awake()
@@ -16,8 +16,11 @@ public class ScoreHandler : MonoBehaviour
         score = 0;
         // Note: string is immutable in C#
         DisplayScore(this, 0);
-        gasReceiver.OnGasReceived += AddPoints;
-        gasReceiver.OnGasReceived += DisplayScore;
+        foreach (ZoneReceiver gasReceiver in gasReceiverList)
+        {
+            gasReceiver.OnGasReceived += AddPoints;
+            gasReceiver.OnGasReceived += DisplayScore;
+        }
     }
 
     private void DisplayScore(object sender, int placeHolder)

@@ -1908,6 +1908,16 @@ PrefabInstance:
       propertyPath: gasReceiver
       value: 
       objectReference: {fileID: 125345148}
+    - target: {fileID: 838043047012739112, guid: a558cc82558a246729c6711aff766f1f,
+        type: 3}
+      propertyPath: gasReceiverList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 838043047012739112, guid: a558cc82558a246729c6711aff766f1f,
+        type: 3}
+      propertyPath: gasReceiverList.Array.data[0]
+      value: 
+      objectReference: {fileID: 125345148}
     - target: {fileID: 838043047932171096, guid: a558cc82558a246729c6711aff766f1f,
         type: 3}
       propertyPath: m_Name
